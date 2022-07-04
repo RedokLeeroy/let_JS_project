@@ -1,11 +1,9 @@
 //Base
 @import './utils/vars';
-// @import './utils/mixin'; виставляємо контейнер
+@import './utils/mixin';
 @import './utils/visually-hidden';
 @import './utils/common';
 @import './base/grid';
 @import './base/reset';
-// @import './base/base' виставляємо контейнери
-
-// Components
+@import './base/base'; // Components
 // Layouts
