@@ -1,2 +1,11 @@
-@import './common';
-@import './example';
+//Base
+@import './utils/vars';
+// @import './utils/mixin'; виставляємо контейнер
+@import './utils/visually-hidden';
+@import './utils/common';
+@import './base/grid';
+@import './base/reset';
+// @import './base/base' виставляємо контейнери
+
+// Components
+// Layouts

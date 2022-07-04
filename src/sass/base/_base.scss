@@ -1,0 +1,19 @@
+.container {
+  max-width: px;
+  padding-left: px;
+  padding-right: px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mq(tablet) {
+    max-width: px;
+    padding-left: px;
+    padding-right: px;
+  }
+
+  @include mq(desktop) {
+    max-width: px;
+    padding-left: px;
+    padding-right: px;
+  }
+}
