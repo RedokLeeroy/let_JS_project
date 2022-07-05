@@ -3,6 +3,6 @@ import { renderModalFilm } from './js/templates/renderModalFilm';
 import callModal from './js/componentsJs/modalFooter';
 renderModalFilm();
 
-// import { ThemoviedbAPI } from './js/API/themoviedb-api';
+import { getApiList } from './js/componentsJs/generateCardList';
 
-// const themoviedbAPI = new ThemoviedbAPI();
+getApiList('trending')

@@ -1,14 +1,13 @@
 import { ThemoviedbAPI } from '../API/themoviedb-api';
+import { serchGenre } from './decodeGanre';
 
 const themoviedbAPI = new ThemoviedbAPI();
 
-console.log(themoviedbAPI.BASE_URL);
-
 export function createCard(data) {
-  // console.log(data);
 
   // const {
   //   backdrop_path,
+  //   genre_ids,
   //   id,
   //   original_title,
   //   poster_path,
@@ -21,6 +20,7 @@ export function createCard(data) {
     .map(
       ({
         backdrop_path,
+        genre_ids,
         id,
         original_title,
         poster_path,
@@ -28,6 +28,12 @@ export function createCard(data) {
         title,
         vote_average,
       }) => {
+        const average = vote_average.toString().slice(0,3)
+        const dateYear =new Date().getFullYear(release_date)
+        // const genres =serchGenre([genre_ids])
+        // console.log(genre_ids);
+
+
         return `
           <li class="card_item grid-item" id=${id}>
             <div class="card__image">
@@ -41,8 +47,8 @@ export function createCard(data) {
                 <span class="genre">Drama</span>
               </div>
               <span class="vertical-line">|</span>
-              <span class="card__year">2020</span>
-              <span class='card__average'>${vote_average}</span>
+              <span class="card__year">${dateYear}</span>
+              <span class='card__average'>${average}</span>
             </div>
           </li>
         `;
@@ -51,6 +57,3 @@ export function createCard(data) {
     .join('');
 }
 
-// console.log(a);
-
-// document.body.insertAdjacentHTML('beforeend', a);
