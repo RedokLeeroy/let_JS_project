@@ -26,10 +26,7 @@ export class ThemoviedbAPI {
   }
 
   async getSertchMovie() {
-    this.#keyword = 'cat'; //тимчасово
-
     const option = 'keyword';
-
     const search = 'search';
 
     try {
