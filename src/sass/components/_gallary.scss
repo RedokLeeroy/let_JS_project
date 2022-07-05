@@ -1,6 +1,7 @@
 .gallery {
   --items: 1;
   --indent: 20px;
+  margin-top: 20px;
 
   @include mq(tablet) {
     --items: 2;
