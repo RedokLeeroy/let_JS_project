@@ -1,0 +1,105 @@
+.header__container {
+  background: rgba(0, 0, 0, 0.56);
+  &--index {
+    background-image: url(../images/header/mobile/index-bkgd.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    mix-blend-mode: overlay;
+    opacity: 0.9;
+  }
+  &--library {
+    background-image: url(../images/header/mobile/bkgd.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+.header__btn {
+  font-family: Roboto;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  background: transparent;
+  padding: 0;
+}
+.header__btn.header__btn--current {
+  border-bottom: 3px solid red;
+}
+.header__link {
+  margin-right: 112px;
+  padding-top: 40px;
+  padding-bottom: 54px;
+}
+.header__link-btn {
+  padding-top: 44px;
+  padding-bottom: 60px;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+.header__nav {
+  display: flex;
+}
+.search-form {
+  width: 100%;
+  padding-bottom: 92px;
+}
+.search-input {
+  height: 20px;
+  background-color: transparent;
+  border: none;
+}
+.search-btn {
+  font-family: Roboto;
+  background-color: transparent;
+  padding: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+  border: none;
+  color: #ffffff;
+}
+.input-wrap {
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 62px;
+}
+.header__library-btn {
+  font-family: Roboto;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+  padding-bottom: 12px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-top: 15px;
+  border-radius: 5px;
+}
+.header__library-btn--orange {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+}
+.header__library-btn--transparent {
+  background: transparent;
+  border: 1px solid #ffffff;
+}
