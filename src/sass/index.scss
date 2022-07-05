@@ -5,6 +5,8 @@
 @import './utils/common';
 @import './base/grid';
 @import './base/reset';
-@import './base/base'; // Components
+@import './base/base';
+// Components
+@import './components/arrow';
 // Layouts
 @import './layout/header';
