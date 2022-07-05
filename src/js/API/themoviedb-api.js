@@ -57,15 +57,4 @@ export class ThemoviedbAPI {
     this.page = 1;
   }
 
-  // get page() {
-  //   return this.page;
-  // }
-
-  // set page(value) {
-  //   this.page = value;
-  // }
-
-  get BASE_URL() {
-    return this.#BASE_URL;
-  }
 }
