@@ -7,15 +7,15 @@ console.log(themoviedbAPI.BASE_URL);
 export function createCard(data) {
   // console.log(data);
 
-  const {
-    backdrop_path,
-    id,
-    original_title,
-    poster_path,
-    release_date,
-    title,
-    vote_average,
-  } = data;
+  // const {
+  //   backdrop_path,
+  //   id,
+  //   original_title,
+  //   poster_path,
+  //   release_date,
+  //   title,
+  //   vote_average,
+  // } = data;
 
   return data
     .map(
@@ -31,7 +31,7 @@ export function createCard(data) {
         return `
           <li class="card_item grid-item" id=${id}>
             <div class="card__image">
-              <img class="image" src="${backdrop_path}" alt="${title}" loading="lazy" />
+              <img class="image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
             </div>
 
             <h1 class="card__title">${title}</h1>
