@@ -1,7 +1,4 @@
 export class ThemoviedbAPI {
-  // static #BASE_URL = 'https://api.themoviedb.org/3/search/movie';
-  // static #API_KEY = '?api_key=7a4cd4317772102a9b88ef6a54b71590';
-
   #BASE_URL = 'https://api.themoviedb.org/3/';
   #API_KEY = '?api_key=7a4cd4317772102a9b88ef6a54b71590';
 
@@ -46,6 +43,20 @@ export class ThemoviedbAPI {
     }
   }
 
+  async getGanres() {
+    const genre = 'genre';
+    const option = 'movie';
+    const list = 'list';
+
+    try {
+      return await fetch(
+        `${this.#BASE_URL}${genre}/${option}/${list}${this.#API_KEY}`
+      ).then(res => res.json());
+    } catch (arr) {
+      console.log(err);
+    }
+  }
+
   resetPage() {
     this.#page = 0;
   }
@@ -65,14 +76,8 @@ export class ThemoviedbAPI {
   set keyword(value) {
     this.#keyword = value;
   }
+
+  get BASE_URL() {
+    return this.#BASE_URL;
+  }
 }
-
-//-------------------------------------------\\
-
-// const pixabayAPI = new PixabayAPI();
-
-// const keyword = searchQuery.value.trim();
-// //  pixabayAPI.page = 1;
-// pixabayAPI.keyword = keyword;
-
-// pixabayAPI.getIMGs().then(handleSuccess).catch(handleError);
