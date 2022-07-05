@@ -25,7 +25,6 @@ export class ThemoviedbAPI {
   async getSertchMovie(keyword) {
 
     const option = 'keyword';
-
     const search = 'search';
 
     try {
