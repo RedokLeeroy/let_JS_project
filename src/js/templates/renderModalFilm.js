@@ -1,7 +1,18 @@
 const modalFilmCard = document.querySelector('.modal-film');
+const getList = document.querySelector('.gallery');
 
-export function renderModalFilm(img) {
-  const renderFilm = `
+export function renderModalFilm(data) {
+  getList.addEventListener('click', evt => {
+    const ids = evt.path[2].id;
+    renderFilms(ids);
+  });
+  function renderFilms(id) {
+    const obj = data.find(option => option.id === Number(id));
+    console.log(obj);
+    const { original_title, popularity, vote_average, vote_count } = obj;
+    modalFilmCard.innerHTML = '';
+    const average = vote_average.toString().slice(0, 3);
+    const renderFilm = `
   <div class='modal-container'>
   <button class="btn-close" type="button"></button>
   <div class='image-content'></div>
@@ -12,15 +23,15 @@ export function renderModalFilm(img) {
   <tbody>
     <tr>
       <td><p class='table-text__left'>Vote / Votes</p></td>
-      <td><p class='table-text__right'>API</p></td>
+      <td><p class='table-text__right'>${average}/${vote_count}</p></td>
       </tr>
     <tr>
       <td><p class='table-text__left'>Popularity</p></td>
-      <td><p class='table-text__right'>API</p></td>
+      <td><p class='table-text__right'>${popularity}</p></td>
      </tr>
       <tr>
       <td><p class='table-text__left'>Original Title</p></td>
-      <td><p class='table-text__right'>API</p></td>
+      <td><p class='table-text__right'>${original_title}</p></td>
      </tr>
       <tr>
       <td><p class='table-text__left'>Genre</p></td>
@@ -46,5 +57,6 @@ export function renderModalFilm(img) {
   </div>
   </div>`;
 
-  return modalFilmCard.insertAdjacentHTML('beforeend', renderFilm);
+    return modalFilmCard.insertAdjacentHTML('afterbegin', renderFilm);
+  }
 }
