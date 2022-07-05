@@ -6,6 +6,12 @@
 @import './base/grid';
 @import './base/reset';
 @import './base/base'; // Components
+@import './components/modal';
+
+// Components
+@import './components/gallary';
+@import './components/arrow';
 // Layouts
 @import './layout/header';
 @import './layout/modal-film';
+@import './layout/footer';
