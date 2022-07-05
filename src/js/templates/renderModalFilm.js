@@ -30,7 +30,7 @@ export function renderModalFilm(img) {
 </table>
  
      <p class='descr-text'>About</p>
-    <p class='descr-text-content '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea, suscipit accusamus sapiente recusandae doloremque ipsam repudiandae a possimus obcaecati dicta reprehenderit aliquam deleniti minima, voluptatum sed molestiae et natus
+    <p class='descr-text content '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea, suscipit accusamus sapiente recusandae doloremque ipsam repudiandae a possimus obcaecati dicta reprehenderit aliquam deleniti minima, voluptatum sed molestiae et natus
     </p>
     
   <ul class='btn-list'>
