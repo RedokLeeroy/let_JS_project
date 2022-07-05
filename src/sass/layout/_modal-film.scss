@@ -13,6 +13,12 @@
     margin-right: auto;
     outline: 1px solid tomato;
   }
+  @include mq(desktop) {
+    display: flex;
+    width: 806px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .btn-close {
   position: absolute;
@@ -40,11 +46,17 @@
     height: 373px;
     margin-right: 68px;
   }
+  @include mq(desktop) {
+    margin-right: 16px;
+  }
 }
 .modal-content {
   outline: 1px solid tomato;
   @include mq(tablet) {
     width: 264px;
+  }
+  @include mq(desktop) {
+    width: 391px;
   }
 }
 
