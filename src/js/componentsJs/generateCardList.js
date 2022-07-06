@@ -1,12 +1,12 @@
-// import { ThemoviedbAPI } from '.js/API/themoviedb-api';
 import { ThemoviedbAPI } from '../API/themoviedb-api';
 import { createCard } from './createCard';
 import { renderModalFilm } from '../templates/renderModalFilm';
 import { renderPagination } from '../pagination/pagination';
+import { serchGenre } from './decodeGanre';
+
 const gallery = document.querySelector('.gallery');
 const container = document.querySelector('.pagination-container');
 const themoviedbAPI = new ThemoviedbAPI();
-console.log(container);
 
 let currentPage = 1;
 export function getApiList(apiRoute) {
@@ -16,6 +16,11 @@ export function getApiList(apiRoute) {
 }
 
 function handleSuccess(data) {
+  data.results.forEach(element => {
+    const genreName = serchGenre(element.genre_ids);
+    const newObj = recordingGenre(element, genreName);
+  });
+
   let newData = data.results;
   gallery.insertAdjacentHTML('beforeend', createCard(data.results));
   gallery.innerHTML = createCard(data.results);
@@ -37,4 +42,11 @@ function handlePagination(event) {
     currentPage = page;
   }
   themoviedbAPI.getMovies(currentPage).then(handleSuccess);
+}
+
+function recordingGenre(obj, arr) {
+  const newObj = obj;
+  newObj.genre_name = arr;
+
+  return newObj;
 }
