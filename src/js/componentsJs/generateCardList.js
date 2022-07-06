@@ -1,5 +1,6 @@
 import { ThemoviedbAPI } from '../API/themoviedb-api';
 import { createCard } from './createCard';
+import { renderModalFilm } from '../templates/renderModalFilm';
 import { renderPagination } from '../pagination/pagination';
 import { serchGenre } from './decodeGanre';
 
@@ -8,10 +9,9 @@ const container = document.querySelector('.pagination-container');
 const themoviedbAPI = new ThemoviedbAPI();
 
 let currentPage = 1;
-
 export function getApiList(apiRoute) {
   if (apiRoute === 'trending') {
-    themoviedbAPI.getMovies().then(handleSuccess);
+    themoviedbAPI.getMovies().then(handleSuccess).then(renderModalFilm);
   }
 }
 
@@ -21,9 +21,12 @@ function handleSuccess(data) {
     const newObj = recordingGenre(element, genreName);
   });
 
+  let newData = data.results;
+  gallery.insertAdjacentHTML('beforeend', createCard(data.results));
   gallery.innerHTML = createCard(data.results);
   renderPagination(data.page, data.total_pages, themoviedbAPI.getMovies);
   container.addEventListener('click', handlePagination);
+  return newData;
 }
 
 function handlePagination(event) {
