@@ -1,38 +1,14 @@
 import { ThemoviedbAPI } from '../API/themoviedb-api';
-import { serchGenre } from './decodeGanre';
 
 const themoviedbAPI = new ThemoviedbAPI();
 
 export function createCard(data) {
-
-  // const {
-  //   backdrop_path,
-  //   genre_ids,
-  //   id,
-  //   original_title,
-  //   poster_path,
-  //   release_date,
-  //   title,
-  //   vote_average,
-  // } = data;
-
   return data
     .map(
-      ({
-        backdrop_path,
-        genre_ids,
-        id,
-        original_title,
-        poster_path,
-        release_date,
-        title,
-        vote_average,
-      }) => {
-        const average = vote_average.toString().slice(0,3)
-        const dateYear =new Date().getFullYear(release_date)
-        // const genres =serchGenre([genre_ids])
-        // console.log(genre_ids);
-
+      ({ id, poster_path, release_date, title, vote_average, genre_name }) => {
+        const average = vote_average.toString().slice(0, 3);
+        const dateYear = new Date(release_date).getFullYear();
+        const genreNames = genre_name.join(', ');
 
         return `
           <li class="card_item grid-item" id=${id}>
@@ -43,12 +19,11 @@ export function createCard(data) {
             <h1 class="card__title">${title}</h1>
             <div class="card__info">
               <div class="card__genres">
-                <span class="genre">Drama</span>
-                <span class="genre">Drama</span>
+                <span class="genre">${genreNames}</span>
               </div>
               <span class="vertical-line">|</span>
               <span class="card__year">${dateYear}</span>
-              <span class='card__average'>${average}</span>
+              <span class='card__average on-library'>${average}</span>
             </div>
           </li>
         `;
@@ -56,4 +31,3 @@ export function createCard(data) {
     )
     .join('');
 }
-
