@@ -16,6 +16,7 @@ export default function closeModal() {
   function onEscape(evt) {
     if (evt.code === 'Escape') {
       modalFilmCard.innerHTML = '';
+      window.removeEventListener('keydown', onEscape);
     }
   }
 }
