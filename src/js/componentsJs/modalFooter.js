@@ -3,9 +3,6 @@ const refs = {
   closeModalBtn: document.querySelector('.close-btn'),
   modal: document.querySelector('.modal'),
 };
-console.log(refs.closeModalBtn);
-console.log(refs.openModalBtn);
-console.log(refs.modal);
 
 refs.openModalBtn.addEventListener('click', toggleModal);
 
