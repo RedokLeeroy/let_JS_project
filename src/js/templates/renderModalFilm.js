@@ -1,7 +1,9 @@
 import closeModal from '../componentsJs/toogleModal';
+import addFilmsToLibrary from '../componentsJs/setLocalStorage';
 
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
+let addLib;
 let cards;
 
 function onclick(evt) {
@@ -11,11 +13,12 @@ function onclick(evt) {
   const ids = evt.target.closest('li').id;
   renderFilms(ids);
   closeModal();
+  addFilmsToLibrary(addLib);
 }
 
 function renderFilms(id) {
   const obj = cards.find(option => option.id === Number(id));
-
+  addLib = obj;
   const {
     original_title,
     popularity,
@@ -70,10 +73,10 @@ function renderFilms(id) {
           <p class='descr-text-content '> ${overview}</p>
         <ul class='btn-list'>
           <li class='btn-list__item'>
-            <a class='class='btn-list__item-link' href=""><button class='btn-list__item-btn--add' type="button">add to Watched</button></a>
+           <button class='btn-list__item-btn--add' type="button">add to Watched</button>
           </li>
           <li class='btn-list__item'>
-            <a class='class='btn-list__item-link'  href=""><button class='btn-list__item-btn--queie' type="button">add to queue</button></a>
+            <button class='btn-list__item-btn--queie' type="button">add to queue</button>
           </li>
         </ul>
       </div>
