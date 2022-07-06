@@ -9,21 +9,24 @@ export function renderModalFilm(data) {
   function renderFilms(id) {
     const obj = data.find(option => option.id === Number(id));
     console.log(obj);
-    const { original_title, popularity, vote_average, vote_count } = obj;
+    const { original_title, popularity, vote_average, vote_count, overview } =
+      obj;
     modalFilmCard.innerHTML = '';
     const average = vote_average.toString().slice(0, 3);
+
     const renderFilm = `
+  <div class='backdrop js-backdrop'>
   <div class='modal-container'>
-  <button class="btn-close" type="button"></button>
+  <button class="btn-close" type="button" data-action='close-modal'></button>
   <div class='image-content'></div>
    
  <div class='modal-content'>
- <h3 class='film-title'>film name</h3>
+ <h3 class='film-title'>${original_title}</h3>
      <table class='table'>
   <tbody>
     <tr>
       <td><p class='table-text__left'>Vote / Votes</p></td>
-      <td><p class='table-text__right'>${average}/${vote_count}</p></td>
+      <td><p class='table-text__right'><span class='average'>${average}</span> / ${vote_count}</p></td>
       </tr>
     <tr>
       <td><p class='table-text__left'>Popularity</p></td>
@@ -31,18 +34,18 @@ export function renderModalFilm(data) {
      </tr>
       <tr>
       <td><p class='table-text__left'>Original Title</p></td>
-      <td><p class='table-text__right'>${original_title}</p></td>
+      <td><p class='table-text__right '>${original_title}</p></td>
      </tr>
       <tr>
       <td><p class='table-text__left'>Genre</p></td>
-      <td><p class='table-text__right'>API</p></td>
+      <td><p class='table-text__right '>API</p></td>
      </tr>
    </tbody>
 </table>
  
      <p class='descr-text'>About</p>
-    <p class='descr-text content '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ea, suscipit accusamus sapiente recusandae doloremque ipsam repudiandae a possimus obcaecati dicta reprehenderit aliquam deleniti minima, voluptatum sed molestiae et natus
-    </p>
+    <p class='descr-text content '> ${overview}</p>
+   
     
   <ul class='btn-list'>
     <li class='btn-list__item'>
@@ -55,8 +58,14 @@ export function renderModalFilm(data) {
 </li>
   </ul>
   </div>
-  </div>`;
+  </div>
+  </div>
+ 
+  `;
 
     return modalFilmCard.insertAdjacentHTML('afterbegin', renderFilm);
   }
 }
+
+// <div class='backdrop js-backdrop'>
+// </div>
