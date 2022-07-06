@@ -3,7 +3,7 @@ export class ThemoviedbAPI {
   #API_KEY = '?api_key=7a4cd4317772102a9b88ef6a54b71590';
 
   constructor() {
-    this.page = 1
+    this.page = 1;
   }
 
   async getMovies() {
@@ -22,16 +22,12 @@ export class ThemoviedbAPI {
     }
   }
 
-  async getSertchMovie(keyword) {
-
-    const option = 'keyword';
-    const search = 'search';
-
+  async getSearchMovie(keyword) {
     try {
       return await fetch(
-        `${this.#BASE_URL}${search}/${option}${this.#API_KEY}&query=${
-          keyword
-        }&page=${this.page}`
+        `${this.#BASE_URL}search/movie${this.#API_KEY}&query=${keyword}&page=${
+          this.page
+        }`
       ).then(res => res.json());
     } catch (arr) {
       console.log(err);
@@ -55,5 +51,4 @@ export class ThemoviedbAPI {
   resetPage() {
     this.page = 1;
   }
-
 }

@@ -87,7 +87,7 @@
   padding: 0;
 }
 .header__btn.header__btn--current {
-  border-bottom: 3px solid red;
+  border-bottom: 3px solid #ff001b;
 }
 .header__link {
   margin-right: 112px;
@@ -129,18 +129,23 @@
   }
 }
 .search-input {
-  height: 20px;
+  height: 30px;
   background-color: transparent;
   outline: transparent;
   border: none;
   color: #ffffff;
   min-width: 260px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
 
   @include mq(tablet) {
-    min-width: 316px;
+    min-width: 310px;
   }
   @include mq(desktop) {
-    min-width: 374px;
+    min-width: 370px;
   }
 }
 .search-btn {
@@ -200,4 +205,14 @@
 .header__library-btn--transparent {
   background: transparent;
   border: 1px solid #ffffff;
+}
+.error {
+  margin-top: 20px;
+  color: #ff001b;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1, 14;
+  text-align: center;
 }

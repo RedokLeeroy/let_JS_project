@@ -1,0 +1,1 @@
+myStorage = window.localStorage;
