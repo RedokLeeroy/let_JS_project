@@ -9,10 +9,11 @@ const container = document.querySelector('.pagination-container');
 const themoviedbAPI = new ThemoviedbAPI();
 
 let currentPage = 1;
-export function getApiList(apiRoute) {
-  if (apiRoute === 'trending') {
-    themoviedbAPI.getMovies().then(handleSuccess).then(renderModalFilm);
-  }
+export function getApiList() {
+  themoviedbAPI.getMovies().then(data => {
+    const arr = handleSuccess(data);
+    renderModalFilm(arr);
+  });
 }
 
 function handleSuccess(data) {
@@ -24,7 +25,7 @@ function handleSuccess(data) {
   let newData = data.results;
   gallery.insertAdjacentHTML('beforeend', createCard(data.results));
   gallery.innerHTML = createCard(data.results);
-  renderPagination(data.page, data.total_pages, themoviedbAPI.getMovies);
+  renderPagination(data.page, data.total_pages);
   container.addEventListener('click', handlePagination);
   return newData;
 }
@@ -41,7 +42,10 @@ function handlePagination(event) {
   } else {
     currentPage = page;
   }
-  themoviedbAPI.getMovies(currentPage).then(handleSuccess);
+  themoviedbAPI.getMovies(currentPage).then(data => {
+    const arr = handleSuccess(data);
+    renderModalFilm(arr);
+  });
 }
 
 function recordingGenre(obj, arr) {
