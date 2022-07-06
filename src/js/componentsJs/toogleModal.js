@@ -1,12 +1,21 @@
-const refs = {
-  openModalBtn: document.querySelector('[data-action="open-modal"]'),
-  closeModalBtn: document.querySelector('[data-action="close-modal"]'),
-  backdrop: document.querySelector('.js-backdrop'),
-};
+export default function closeModal() {
+  const closeModalBtn = document.querySelector('[data-action="close-modal-1"]');
+  const modalFilmCard = document.querySelector('.modal-film');
+  const backdropClose = document.querySelector('.backdrop');
 
-refs.openModalBtn.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onBtnClose);
+  closeModalBtn.addEventListener('click', evt => {
+    modalFilmCard.innerHTML = '';
+  });
+  backdropClose.addEventListener('click', evt => {
+    if (evt.currentTarget === evt.target) {
+      modalFilmCard.innerHTML = '';
+    }
+  });
+  window.addEventListener('keydown', onEscape);
 
-function onOpenModal() {
-  document.body.classList.add('show-modal');
+  function onEscape(evt) {
+    if (evt.code === 'Escape') {
+      modalFilmCard.innerHTML = '';
+    }
+  }
 }
