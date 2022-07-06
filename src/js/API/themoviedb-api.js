@@ -22,10 +22,10 @@ export class ThemoviedbAPI {
     }
   }
 
-  async getSearchMovie(keyword) {
+  async getSearchMovie(keyword, page) {
     try {
       return await fetch(
-        `${this.BASE_URL}search/movie${this.API_KEY}&query=${keyword}&page=${this.page}`
+        `${this.BASE_URL}search/movie${this.API_KEY}&query=${keyword}&page=${page}`
       ).then(res => res.json());
     } catch (arr) {
       console.log(err);
