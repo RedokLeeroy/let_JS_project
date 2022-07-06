@@ -19,45 +19,45 @@ export function renderPagination(page, totalPages) {
   const afterNextPage = page + 2;
 
   if (page > 1) {
-    markup += `<li>&loarr;</li>`;
+    markup += `<li class="button style_color">&loarr;</li>`;
   }
 
   if (page > 2) {
-    markup += `<li>1</li>`;
+    markup += `<li class="button style_enpty">1</li>`;
   }
 
   if (page > 4) {
-    markup += `<li>...</li>`;
+    markup += `<li class="button">&middot&middot&middot</li>`;
   }
 
   if (page > 3) {
-    markup += `<li>${beforePrevPage}</li>`;
+    markup += `<li class="button style_enpty">${beforePrevPage}</li>`;
   }
 
   if (page > 1) {
-    markup += `<li>${prevPage}</li>`;
+    markup += `<li class="button style_enpty">${prevPage}</li>`;
   }
 
   markup += `<li class = 'pagination-active'>${page}</li>`;
 
   if (page + 1 < totalPages) {
-    markup += `<li>${nextPage}</li>`;
+    markup += `<li class="button style_enpty">${nextPage}</li>`;
   }
 
   if (page + 2 < totalPages) {
-    markup += `<li>${afterNextPage}</li>`;
+    markup += `<li class="button style_enpty">${afterNextPage}</li>`;
   }
 
   if (totalPages > page + 3) {
-    markup += `<li>...</li>`;
+    markup += `<li class="button">&middot&middot&middot</li>`;
   }
 
   if (totalPages > page) {
-    markup += `<li>${totalPages}</li>`;
+    markup += `<li class="button style_enpty">${totalPages}</li>`;
   }
 
   if (totalPages > page) {
-    markup += '<li>&roarr;</li>';
+    markup += '<li class="button style_color">&roarr;</li>';
   }
   refs.container.innerHTML = markup;
 }
