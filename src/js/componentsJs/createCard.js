@@ -29,9 +29,9 @@ export function createCard(data) {
         vote_average,
       }) => {
         const average = vote_average.toString().slice(0,3)
-        const dateYear =new Date().getFullYear(release_date)
+        const dateYear =new Date(release_date).getFullYear()
         // const genres =serchGenre([genre_ids])
-        // console.log(genre_ids);
+        // console.log(dateYear);
 
 
         return `
