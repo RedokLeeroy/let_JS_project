@@ -1,18 +1,15 @@
-import { ThemoviedbAPI } from "../API/themoviedb-api";
+import { ThemoviedbAPI } from '../API/themoviedb-api';
 
-const themoviedbAPI = new ThemoviedbAPI()
+const themoviedbAPI = new ThemoviedbAPI();
 
-themoviedbAPI.getGanres().then(decodeGanre)
+themoviedbAPI.getGanres().then(decodeGanre);
 
- function decodeGanre(data){
-  const a = data.genres
-  // console.log(a);
-  // a.map(b => console.log(b))
-  
+function decodeGanre(data) {
+  const a = data.genres;
 }
 
-export function serchGenre(arr){
+export function serchGenre(arr) {
   arr.forEach(element => {
-  console.log(element);
+    console.log(element);
   });
 }
