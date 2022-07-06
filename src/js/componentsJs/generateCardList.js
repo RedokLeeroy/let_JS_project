@@ -54,3 +54,5 @@ function recordingGenre(obj, arr) {
 
   return newObj;
 }
+
+getApiList();
