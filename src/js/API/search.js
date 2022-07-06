@@ -1,6 +1,7 @@
 import { ThemoviedbAPI } from './themoviedb-api';
 import { createCard } from '../componentsJs/createCard';
 import { renderPagination } from '../pagination/pagination';
+import { handleSuccess } from '../componentsJs/generateCardList';
 
 const themoviedbAPI = new ThemoviedbAPI();
 const searchInput = document.querySelector('.search-input');
@@ -19,12 +20,13 @@ export function search(event) {
 }
 
 function processSuccess(data) {
-  gallery.innerHTML = createCard(data.results);
-  if (data.total_results === 0) {
+  if (data.total_results === 0 || searchInput.value === '') {
     container.innerHTML = '';
     errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
+  } else {
+    handleSuccess(data);
+    renderPagination(data.page, data.total_pages);
   }
-  renderPagination(data.page, data.total_pages);
   container.addEventListener('click', handlePaginationForSearch);
 }
 

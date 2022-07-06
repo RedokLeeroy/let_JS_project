@@ -16,7 +16,7 @@ export function getApiList() {
   });
 }
 
-function handleSuccess(data) {
+export function handleSuccess(data) {
   data.results.forEach(element => {
     const genreName = serchGenre(element.genre_ids);
     const newObj = recordingGenre(element, genreName);
