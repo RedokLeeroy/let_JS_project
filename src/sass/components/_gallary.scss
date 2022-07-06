@@ -80,3 +80,20 @@
 .vertical-line {
   padding: 0 3px;
 }
+
+.card__average{
+  display: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+
+  // align-items: center;
+  text-transform: uppercase;
+
+  margin-left: 9px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  
+  background: $card-genre-color;
+}

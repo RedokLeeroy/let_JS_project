@@ -1,24 +1,33 @@
-// import { ThemoviedbAPI } from '.js/API/themoviedb-api';
 import { ThemoviedbAPI } from '../API/themoviedb-api';
 import { createCard } from './createCard';
+import { renderModalFilm } from '../templates/renderModalFilm';
 import { renderPagination } from '../pagination/pagination';
+import { serchGenre } from './decodeGanre';
+
 const gallery = document.querySelector('.gallery');
 const container = document.querySelector('.pagination-container');
 const themoviedbAPI = new ThemoviedbAPI();
-console.log(container);
 
 let currentPage = 1;
-
-export function getApiList(apiRoute) {
-  if (apiRoute === 'trending') {
-    themoviedbAPI.getMovies().then(handleSuccess);
-  }
+export function getApiList() {
+  themoviedbAPI.getMovies().then(data => {
+    const arr = handleSuccess(data);
+    renderModalFilm(arr);
+  });
 }
 
-function handleSuccess(data) {
+export function handleSuccess(data) {
+  data.results.forEach(element => {
+    const genreName = serchGenre(element.genre_ids);
+    const newObj = recordingGenre(element, genreName);
+  });
+
+  let newData = data.results;
+  gallery.insertAdjacentHTML('beforeend', createCard(data.results));
   gallery.innerHTML = createCard(data.results);
-  renderPagination(data.page, data.total_pages, themoviedbAPI.getMovies);
+  renderPagination(data.page, data.total_pages);
   container.addEventListener('click', handlePagination);
+  return newData;
 }
 
 function handlePagination(event) {
@@ -33,5 +42,15 @@ function handlePagination(event) {
   } else {
     currentPage = page;
   }
-  themoviedbAPI.getMovies(currentPage).then(handleSuccess);
+  themoviedbAPI.getMovies(currentPage).then(data => {
+    const arr = handleSuccess(data);
+    renderModalFilm(arr);
+  });
+}
+
+function recordingGenre(obj, arr) {
+  const newObj = obj;
+  newObj.genre_name = arr;
+
+  return newObj;
 }
