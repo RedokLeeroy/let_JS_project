@@ -1,0 +1,9 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pagination-active {
+  background-color: orange;
+}

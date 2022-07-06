@@ -3,35 +3,32 @@ export class ThemoviedbAPI {
   #API_KEY = '?api_key=7a4cd4317772102a9b88ef6a54b71590';
 
   constructor() {
-    this.page = 1
+    this.page = 1;
+    this.BASE_URL = 'https://api.themoviedb.org/3/';
+    this.API_KEY = '?api_key=7a4cd4317772102a9b88ef6a54b71590';
   }
 
-  async getMovies() {
+  async getMovies(page = this.page) {
     const trending = 'trending';
     const mediaType = 'movie';
     const timeWindow = 'day';
 
     try {
       return await fetch(
-        `${this.#BASE_URL}${trending}/${mediaType}/${timeWindow}${
-          this.#API_KEY
-        }`
+        `${this.BASE_URL}${trending}/${mediaType}/${timeWindow}${this.API_KEY}&page=${page}`
       ).then(res => res.json());
-    } catch (arr) {
+    } catch (err) {
       console.log(err);
     }
   }
 
   async getSertchMovie(keyword) {
-
     const option = 'keyword';
     const search = 'search';
 
     try {
       return await fetch(
-        `${this.#BASE_URL}${search}/${option}${this.#API_KEY}&query=${
-          keyword
-        }&page=${this.page}`
+        `${this.BASE_URL}${search}/${option}${this.API_KEY}&query=${keyword}&page=${this.page}`
       ).then(res => res.json());
     } catch (arr) {
       console.log(err);
@@ -45,7 +42,7 @@ export class ThemoviedbAPI {
 
     try {
       return await fetch(
-        `${this.#BASE_URL}${genre}/${option}/${list}${this.#API_KEY}`
+        `${this.BASE_URL}${genre}/${option}/${list}${this.API_KEY}`
       ).then(res => res.json());
     } catch (arr) {
       console.log(err);
@@ -55,5 +52,4 @@ export class ThemoviedbAPI {
   resetPage() {
     this.page = 1;
   }
-
 }
