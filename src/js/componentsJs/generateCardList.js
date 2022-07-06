@@ -1,6 +1,7 @@
 import { ThemoviedbAPI } from '../API/themoviedb-api';
 import { createCard } from './createCard';
 import { renderPagination } from '../pagination/pagination';
+import { serchGenre } from './decodeGanre';
 
 const gallery = document.querySelector('.gallery');
 const container = document.querySelector('.pagination-container');
@@ -15,6 +16,11 @@ export function getApiList(apiRoute) {
 }
 
 function handleSuccess(data) {
+  data.results.forEach(element => {
+    const genreName = serchGenre(element.genre_ids);
+    const newObj = recordingGenre(element, genreName);
+  });
+
   gallery.innerHTML = createCard(data.results);
   renderPagination(data.page, data.total_pages, themoviedbAPI.getMovies);
   container.addEventListener('click', handlePagination);
@@ -33,4 +39,11 @@ function handlePagination(event) {
     currentPage = page;
   }
   themoviedbAPI.getMovies(currentPage).then(handleSuccess);
+}
+
+function recordingGenre(obj, arr) {
+  const newObj = obj;
+  newObj.genre_name = arr;
+
+  return newObj;
 }
