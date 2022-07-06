@@ -8,7 +8,7 @@ export function createCard(data) {
       ({ id, poster_path, release_date, title, vote_average, genre_name }) => {
         const average = vote_average.toString().slice(0, 3);
         const dateYear = new Date(release_date).getFullYear();
-        const genreNames = genre_name;
+        const genreNames = genre_name.join(', ');
 
         return `
           <li class="card_item grid-item" id=${id}>
