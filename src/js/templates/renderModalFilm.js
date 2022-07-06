@@ -88,6 +88,5 @@ function renderFilms(id) {
 }
 export function renderModalFilm(data) {
   getList.addEventListener('click', onclick);
-
   cards = data;
 }
