@@ -9,14 +9,12 @@ export default function addFilmsToLibrary(data) {
   const btnAddfilm = document.querySelector('.btn-list__item-btn--add');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
 
-  btnAddfilm.addEventListener('click', onBtnAddClick);
-  btnAddQueie.addEventListener('click', onBtnQueieClick);
-
-  function onBtnAddClick(evt) {
+  btnAddfilm.addEventListener('click', () => {
     arrayWatched.push(data);
-  }
-
-  function onBtnQueieClick(evt) {
+    localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
+  });
+  btnAddQueie.addEventListener('click', () => {
     arrayQueue.push(data);
-  }
+    localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
+  });
 }
