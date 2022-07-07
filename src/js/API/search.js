@@ -1,8 +1,8 @@
 import { ThemoviedbAPI } from './themoviedb-api';
-import { createCard } from '../componentsJs/createCard';
 import { renderPagination } from '../pagination/pagination';
 import { handleSuccess } from '../componentsJs/generateCardList';
 import { renderModalFilm } from '../templates/renderModalFilm';
+import { handlePagination } from '../componentsJs/generateCardList';
 
 const themoviedbAPI = new ThemoviedbAPI();
 const searchInput = document.querySelector('.search-input');
@@ -36,6 +36,8 @@ function processSuccess(data) {
   } else {
     renderPagination(data.page, data.total_pages);
   }
+  handleSuccess(data);
+  container.removeEventListener('click', handlePagination);
   container.addEventListener('click', handlePaginationForSearch);
   return data.results;
 }
