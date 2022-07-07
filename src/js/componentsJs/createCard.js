@@ -10,7 +10,6 @@ export function createCard(data) {
 
         let dateYear; //\\ доробити рік
         dateYear = new Date(release_date).getFullYear();
-
         let genreNames;
         let verticalLine = `<span class="vertical-line">|</span>`;
         if (genre_name.length > 3) {
