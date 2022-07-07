@@ -30,7 +30,7 @@ export function handleSuccess(data) {
   return newData;
 }
 
-function handlePagination(event) {
+export function handlePagination(event) {
   if (event.target.tagName !== 'LI' || event.target.textContent === '...') {
     return;
   }
