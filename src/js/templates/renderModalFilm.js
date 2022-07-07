@@ -3,6 +3,7 @@ import addFilmsToLibrary from '../componentsJs/setLocalStorage';
 
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
+
 let addLib;
 let cards;
 
@@ -14,6 +15,8 @@ function onclick(evt) {
   renderFilms(ids);
   closeModal();
   addFilmsToLibrary(addLib);
+
+  document.body.classList.add('hidden');
 }
 
 function renderFilms(id) {
