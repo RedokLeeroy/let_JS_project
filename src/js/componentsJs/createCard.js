@@ -24,7 +24,6 @@ export function createCard(data) {
         let originPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
         let avaibleYear = 'Info is not available';
         if (!poster_path) {
-          console.log(poster_path);
           originPoster = coverImage;
         }
         if (!dateYear) {
