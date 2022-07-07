@@ -18,11 +18,10 @@ const localObj = {
   page: currentPage,
   results: [],
   total_pages: 0,
-  blala: true,
+  inLocalStorage: true,
 };
 
 if (watchedCards.length !== 0) {
-  console.log(22);
   watchedCards.forEach(element => {
     localObj.results.push(element);
   });
@@ -31,7 +30,6 @@ if (watchedCards.length !== 0) {
   renderModalFilm(arr);
 }
 if (queuedCards.length !== 0) {
-  console.log(22);
   queuedCards.forEach(element => {
     localObj.results.push(element);
   });
