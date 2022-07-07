@@ -17,11 +17,13 @@ export function getApiList() {
 }
 
 export function handleSuccess(data) {
-  // console.log(data);
-  data.results.forEach(element => {
-    const genreName = serchGenre(element.genre_ids);
-    const newObj = recordingGenre(element, genreName);
-  });
+  console.log(data);
+  if (!data.blala) {
+    data.results.forEach(element => {
+      const genreName = serchGenre(element.genre_ids);
+      const newObj = recordingGenre(element, genreName);
+    });
+  }
 
   let newData = data.results;
   gallery.insertAdjacentHTML('beforeend', createCard(data.results));
@@ -55,5 +57,3 @@ function recordingGenre(obj, arr) {
 
   return newObj;
 }
-
-getApiList();

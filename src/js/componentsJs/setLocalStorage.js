@@ -7,8 +7,6 @@ const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 let arrayWatched = [];
 let arrayQueue = [];
 
-console.log(watchedCards);
-
 if (!watchedCards) {
   localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
 }
