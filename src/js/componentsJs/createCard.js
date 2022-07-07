@@ -22,7 +22,7 @@ export function createCard(data) {
         }
         let coverImage = 'https://i.ibb.co/JyBCdzw/sinema-empty.jpg';
         let originPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
-        let avaibleYear = 'Movie info not available';
+        let avaibleYear = 'Info is not available';
         if (!poster_path) {
           console.log(poster_path);
           originPoster = coverImage;
