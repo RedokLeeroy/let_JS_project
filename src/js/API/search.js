@@ -43,7 +43,9 @@ function processSuccess(data) {
   } else {
     renderPagination(data.page, data.total_pages);
   }
-  handleSuccess(data);
+
+  const arr = handleSuccess(data);
+  renderModalFilm(arr);
   container.removeEventListener('click', handlePagination);
   container.addEventListener('click', handlePaginationForSearch);
   return data.results;
