@@ -4,7 +4,6 @@
   padding-bottom: 30px;
   padding-top: 29px;
   text-align: center;
-  background-color: #f7f7f7;
 
   @include mq(tablet) {
     display: flex;
@@ -13,6 +12,9 @@
   }
 }
 
+footer {
+  background-color: #f7f7f7;
+}
 .copyright {
   font-family: 'Roboto';
   font-weight: 400;

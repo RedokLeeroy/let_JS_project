@@ -13,7 +13,6 @@ const container = document.querySelector('.pagination-container');
 let currentPage = 1;
 
 const searchForm = document.querySelector('.search-form');
-
 searchForm.addEventListener('submit', search);
 
 export function search(event) {
