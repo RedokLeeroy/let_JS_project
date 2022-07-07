@@ -5,10 +5,14 @@ export default function closeModal() {
 
   closeModalBtn.addEventListener('click', evt => {
     modalFilmCard.innerHTML = '';
+    //FIXME:
+    document.body.classList.remove('hidden');
   });
   backdropClose.addEventListener('click', evt => {
     if (evt.currentTarget === evt.target) {
       modalFilmCard.innerHTML = '';
+      //FIXME:
+      document.body.classList.remove('hidden');
     }
   });
   window.addEventListener('keydown', onEscape);
@@ -17,6 +21,8 @@ export default function closeModal() {
     if (evt.code === 'Escape') {
       modalFilmCard.innerHTML = '';
       window.removeEventListener('keydown', onEscape);
+      //FIXME:
+      document.body.classList.remove('hidden');
     }
   }
 }
