@@ -1,0 +1,218 @@
+.header {
+  background: rgba(0, 0, 0, 0.56);
+}
+.header.header-index {
+  background-image: url(../images/header/mobile/index-bkgd.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+
+  @include mq(retina) {
+    background-image: url(../images/header/mobile/index-bkgd@2.png);
+  }
+  @media screen and (min-width: 780px) and (max-width: 1279px) {
+    background-image: url(../images/header/tablet/index-bkgd.png);
+    @include mq(retina) {
+      background-image: url(../images/header/tablet/index-bkgd@2.png);
+    }
+  }
+  @include mq(desktop) {
+    background-image: url(../images/header/desktop/index-bkgd.png);
+    @include mq(retina) {
+      background-image: url(../images/header/desktop/index-bkgd@2.png);
+    }
+  }
+}
+
+.header.header-library {
+  background-image: url(../images/header/mobile/bkgd.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include mq(retina) {
+    background-image: url(../images/header/mobile/bkgd@2.png);
+  }
+  @include mq(tablet) {
+    background-image: url(../images/header/tablet/bkgd.png);
+    @include mq(retina) {
+      background-image: url(../images/header/tablet/bkgd@2.png);
+    }
+  }
+  @include mq(desktop) {
+    background-image: url(../images/header/desktop/bkgd.png);
+    @include mq(retina) {
+      background-image: url(../images/header/desktop/bkgd@2.png);
+    }
+  }
+}
+
+@include mq(tablet) {
+  .logo-wrap {
+    display: flex;
+  }
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  @include mq(tablet) {
+    justify-content: space-between;
+  }
+}
+
+.logotext {
+  @media screen and (max-width: 767.9px) {
+    display: none;
+  }
+  @include mq(tablet) {
+    padding-top: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+    color: #ffffff;
+  }
+}
+
+.header__btn {
+  font-family: Roboto;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  background: transparent;
+  padding: 0;
+}
+.header__btn.header__btn--current {
+  border-bottom: 3px solid #ff001b;
+}
+.header__link {
+  margin-right: 112px;
+  padding-top: 40px;
+  padding-bottom: 54px;
+
+  @include mq(tablet) {
+    margin-right: 10px;
+    padding-top: 45px;
+    padding-bottom: 49px;
+  }
+}
+.header__link-btn {
+  padding-top: 44px;
+  padding-bottom: 60px;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+  @include mq(tablet) {
+    padding-top: 50px;
+  }
+}
+.header__nav {
+  display: flex;
+}
+.search-form {
+  width: 100%;
+  padding-bottom: 92px;
+  @include mq(tablet) {
+    max-width: 336px;
+    margin: 0 auto;
+    padding-bottom: 81px;
+  }
+  @include mq(desktop) {
+    max-width: 394px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+  }
+}
+.search-input {
+  height: 30px;
+  background-color: transparent;
+  outline: transparent;
+  border: none;
+  color: #ffffff;
+  min-width: 260px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+
+  @include mq(tablet) {
+    min-width: 310px;
+  }
+  @include mq(desktop) {
+    min-width: 370px;
+  }
+}
+.search-btn {
+  font-family: Roboto;
+  background-color: transparent;
+  padding: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+  border: none;
+  color: #ffffff;
+}
+.input-wrap {
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 1px solid #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 62px;
+  @include mq(tablet) {
+    justify-content: center;
+    padding-bottom: 60px;
+  }
+}
+.header__library-btn {
+  font-family: Roboto;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+  padding-bottom: 12px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-top: 15px;
+  border-radius: 5px;
+}
+.header__library-btn--orange {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+
+  @include mq(tablet) {
+    margin-right: 32px;
+  }
+  @include mq(desktop) {
+    margin-right: 16px;
+  }
+}
+.header__library-btn--transparent {
+  background: transparent;
+  border: 1px solid #ffffff;
+}
+.error {
+  margin-top: 20px;
+  color: #ff001b;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1, 14;
+  text-align: center;
+}

@@ -11,8 +11,21 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
-    <main></main>
+    <include src="./partials/header_index.html"></include>
+
+    <main>
+      <include src="./partials/film-gallery.html"></include>
+      <include src="./partials/pagination.html"></include>
+    </main>
+    <footer class="footer">
+      <include src="./partials/footer.html"></include>
+    </footer>
+    <include src="./partials/modal.html"></include>
+    <div class="modal-film"></div>
+
     <script src="./index.js" type="module"></script>
+    <!-- <script src="./js/componentsJs/setLocalStorage.js" type="module"></script> -->
   </body>
 </html>

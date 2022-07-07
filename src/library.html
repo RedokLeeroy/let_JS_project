@@ -12,7 +12,15 @@
     />
   </head>
   <body>
-    <main></main>
-    <script src="./index.js" type="module"></script>
+    <include src="./partials/header_library.html"></include>
+    <main>
+      <include src="./partials/film-gallery.html"></include>
+    </main>
+    <footer class="footer">
+      <include src="./partials/footer.html"></include>
+    </footer>
+    <include src="./partials/modal.html"></include>
+
+    <script src="./library.js" type="module"></script>
   </body>
 </html>
