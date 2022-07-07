@@ -17,6 +17,7 @@ export function getApiList() {
 }
 
 export function handleSuccess(data) {
+  // console.log(data);
   data.results.forEach(element => {
     const genreName = serchGenre(element.genre_ids);
     const newObj = recordingGenre(element, genreName);
@@ -30,7 +31,7 @@ export function handleSuccess(data) {
   return newData;
 }
 
-function handlePagination(event) {
+export function handlePagination(event) {
   if (event.target.tagName !== 'LI' || event.target.textContent === '...') {
     return;
   }

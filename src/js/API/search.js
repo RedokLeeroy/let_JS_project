@@ -1,8 +1,8 @@
 import { ThemoviedbAPI } from './themoviedb-api';
-import { createCard } from '../componentsJs/createCard';
 import { renderPagination } from '../pagination/pagination';
 import { handleSuccess } from '../componentsJs/generateCardList';
 import { renderModalFilm } from '../templates/renderModalFilm';
+import { handlePagination } from '../componentsJs/generateCardList';
 
 const themoviedbAPI = new ThemoviedbAPI();
 const searchInput = document.querySelector('.search-input');
@@ -17,10 +17,17 @@ searchForm.addEventListener('submit', search);
 
 export function search(event) {
   event.preventDefault();
+
+  if (searchInput.value.trim() === '') {
+    return;
+  }
+
   errorText.innerHTML = '';
+  currentPage = 1;
+
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
-      processSuccess(data);
+      errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
       return;
     }
     const arr = handleSuccess(data);
@@ -36,6 +43,10 @@ function processSuccess(data) {
   } else {
     renderPagination(data.page, data.total_pages);
   }
+
+  const arr = handleSuccess(data);
+  renderModalFilm(arr);
+  container.removeEventListener('click', handlePagination);
   container.addEventListener('click', handlePaginationForSearch);
   return data.results;
 }

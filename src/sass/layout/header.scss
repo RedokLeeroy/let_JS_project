@@ -7,7 +7,6 @@
   background-size: cover;
 
   mix-blend-mode: overlay;
-  opacity: 0.9;
 
   @include mq(retina) {
     background-image: url(../images/header/mobile/index-bkgd@2.png);
@@ -190,11 +189,9 @@
   padding-right: 36px;
   padding-top: 15px;
   border-radius: 5px;
-}
-.header__library-btn--orange {
-  background: #ff6b01;
-  border: 1px solid #ff6b01;
-
+  background: transparent;
+  border: 1px solid #ffffff;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @include mq(tablet) {
     margin-right: 32px;
   }
@@ -202,10 +199,12 @@
     margin-right: 16px;
   }
 }
-.header__library-btn--transparent {
-  background: transparent;
-  border: 1px solid #ffffff;
+.header__library-btn:hover,
+.header__library-btn:active {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
 }
+
 .error {
   margin-top: 20px;
   color: #ff001b;
