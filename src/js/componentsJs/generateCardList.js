@@ -17,8 +17,7 @@ export function getApiList() {
 }
 
 export function handleSuccess(data) {
-  console.log(data);
-  if (!data.blala) {
+  if (!data.inLocalStorage) {
     data.results.forEach(element => {
       const genreName = serchGenre(element.genre_ids);
       const newObj = recordingGenre(element, genreName);
@@ -54,6 +53,8 @@ export function handlePagination(event) {
 function recordingGenre(obj, arr) {
   const newObj = obj;
   newObj.genre_name = arr;
+  newObj.isWatched = false;
+  newObj.isQueued = false;
 
   return newObj;
 }
