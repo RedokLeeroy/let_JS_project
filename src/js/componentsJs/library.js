@@ -1,5 +1,6 @@
 import { createCard } from './createCard';
-// import { handleSuccess } from './generateCardList';
+import { handleSuccess } from './generateCardList';
+import { renderModalFilm } from '../templates/renderModalFilm';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
@@ -13,21 +14,31 @@ main.style.height = '100vh';
 
 let currentPage = 1;
 
-const localArray = [];
 const localObj = {
   page: currentPage,
-  results: localArray,
-  // total_pages
+  results: [],
+  total_pages: 0,
+  blala: true,
 };
-// console.log(localObj.results);
 
-console.log(watchedCards);
+if (watchedCards.length !== 0) {
+  console.log(22);
+  watchedCards.forEach(element => {
+    localObj.results.push(element);
+  });
 
-// export function getFilmLocalStorage(data) {
-//   console.log(data);
-// }
+  const arr = handleSuccess(localObj);
+  renderModalFilm(arr);
+}
+if (queuedCards.length !== 0) {
+  console.log(22);
+  queuedCards.forEach(element => {
+    localObj.results.push(element);
+  });
 
-// handleSuccess(localObj);
+  const arr = handleSuccess(localObj);
+  renderModalFilm(arr);
+}
 
 gallery.innerHTML = createCard(watchedCards);
 
