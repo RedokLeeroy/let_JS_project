@@ -8,7 +8,7 @@ export function createCard(data) {
       ({ id, poster_path, release_date, title, vote_average, genre_name }) => {
         const average = vote_average.toString().slice(0, 3);
 
-        let dateYear; //\\ доробити рік
+        let dateYear;
         dateYear = new Date(release_date).getFullYear();
         let genreNames;
         let verticalLine = `<span class="vertical-line">|</span>`;
@@ -20,12 +20,22 @@ export function createCard(data) {
         } else {
           genreNames = genre_name.join(', ');
         }
+        let coverImage = 'https://i.ibb.co/JyBCdzw/sinema-empty.jpg';
+        let originPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        let avaibleYear = 'Movie info not available';
+        if (!poster_path) {
+          console.log(poster_path);
+          originPoster = coverImage;
+        }
+        if (!dateYear) {
+          dateYear = avaibleYear;
+        }
 
         return `
           <li class="card_item grid-item" id=${id}>
             <div class="card__image">
-              <img class="image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
-            </div>
+              <img class="image" src=${originPoster} alt="${title}" loading="lazy" />
+              </div>
 
             <h1 class="card__title">${title}</h1>
             <div class="card__info">
