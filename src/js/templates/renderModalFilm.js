@@ -15,7 +15,7 @@ function onclick(evt) {
   renderFilms(ids);
   closeModal();
   addFilmsToLibrary(addLib);
-  //FIXME:
+
   document.body.classList.add('hidden');
 }
 
