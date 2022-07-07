@@ -17,10 +17,17 @@ searchForm.addEventListener('submit', search);
 
 export function search(event) {
   event.preventDefault();
+
+  if (searchInput.value.trim() === '') {
+    return;
+  }
+
   errorText.innerHTML = '';
+  currentPage = 1;
+
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
-      processSuccess(data);
+      errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
       return;
     }
     const arr = handleSuccess(data);
