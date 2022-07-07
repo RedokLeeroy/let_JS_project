@@ -17,11 +17,12 @@ export function getApiList() {
 }
 
 export function handleSuccess(data) {
-  // console.log(data);
-  data.results.forEach(element => {
-    const genreName = serchGenre(element.genre_ids);
-    const newObj = recordingGenre(element, genreName);
-  });
+  if (!data.inLocalStorage) {
+    data.results.forEach(element => {
+      const genreName = serchGenre(element.genre_ids);
+      const newObj = recordingGenre(element, genreName);
+    });
+  }
 
   let newData = data.results;
   gallery.insertAdjacentHTML('beforeend', createCard(data.results));
@@ -52,8 +53,8 @@ export function handlePagination(event) {
 function recordingGenre(obj, arr) {
   const newObj = obj;
   newObj.genre_name = arr;
+  newObj.isWatched = false;
+  newObj.isQueued = false;
 
   return newObj;
 }
-
-getApiList();

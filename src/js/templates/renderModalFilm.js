@@ -1,5 +1,6 @@
 import closeModal from '../componentsJs/toogleModal';
 import addFilmsToLibrary from '../componentsJs/setLocalStorage';
+import removeFilmsFromLibrary from '../componentsJs/removeCard';
 
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
@@ -15,6 +16,7 @@ function onclick(evt) {
   renderFilms(ids);
   closeModal();
   addFilmsToLibrary(addLib);
+  removeFilmsFromLibrary(addLib);
 
   document.body.classList.add('hidden');
 }

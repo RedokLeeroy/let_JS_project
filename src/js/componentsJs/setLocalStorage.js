@@ -7,8 +7,6 @@ const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 let arrayWatched = [];
 let arrayQueue = [];
 
-console.log(watchedCards);
-
 if (!watchedCards) {
   localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
 }
@@ -30,14 +28,50 @@ if (!queuedCards.length) {
 }
 
 export default function addFilmsToLibrary(data) {
-  const btnAddfilm = document.querySelector('.btn-list__item-btn--add');
+  const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
 
-  btnAddfilm.addEventListener('click', () => {
+  btnAddWatch.addEventListener('click', () => {
+    data.inLocalStorage = true;
+    data.isWatched = true;
+
+    btnAddWatch.textContent = 'Added!';
+    btnAddWatch.disabled = true;
+
+    const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+
+    let cardIdWatch = [];
+
+    getCardWatched.map(el => {
+      cardIdWatch.push(el.id);
+    });
+
+    if (cardIdWatch.find(el => el === data.id)) {
+      return;
+    }
+
     arrayWatched.push(data);
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
   });
+
   btnAddQueie.addEventListener('click', () => {
+    data.inLocalStorage = true;
+    data.isQueued = true;
+
+    btnAddQueie.textContent = 'Added!';
+    btnAddQueie.disabled = true;
+
+    const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+
+    let cardIdQueue = [];
+
+    getCardQueue.map(el => {
+      cardIdQueue.push(el.id);
+    });
+
+    if (cardIdQueue.find(el => el === data.id)) {
+      return;
+    }
     arrayQueue.push(data);
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
   });
