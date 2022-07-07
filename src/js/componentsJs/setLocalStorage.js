@@ -1,5 +1,6 @@
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
+
 let arrayWatched = [];
 let arrayQueue = [];
 localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
