@@ -18,6 +18,7 @@ const localObj = {
   total_pages: 0,
   inLocalStorage: true,
   isWatched: false,
+  isQueued: false,
 };
 
 watchCards();
@@ -28,34 +29,36 @@ if (watchedCards.length !== 0) {
 watchedBtn.addEventListener('click', watchCards);
 queueBtn.addEventListener('click', queueCards);
 
-function watchCards(evt) {
+function watchCards() {
   togglePlaceholder(watchedCards);
-  gallery.innerHTML = '';
+  queueBtn.classList.remove('active');
+  watchedBtn.classList.add('active');
+
   if (watchedCards.length !== 0) {
+    localObj.results = [];
     watchedCards.forEach(element => {
       localObj.results.push(element);
     });
-    //   togglePlaceholder(watchedCards);
-    // gallery.innerHTML = '';
     const arr = handleSuccess(localObj);
     renderModalFilm(arr);
-    queueBtn.classList.remove('active');
-    watchedBtn.classList.add('active');
   }
+  console.log(localObj);
+  console.log(watchedCards);
 }
 
-function queueCards(evt) {
-  gallery.innerHTML = '';
+function queueCards() {
   togglePlaceholder(queuedCards);
+  watchedBtn.classList.remove('active');
+  queueBtn.classList.add('active');
+
   if (queuedCards.length !== 0) {
+    localObj.results = [];
     queuedCards.forEach(element => {
       localObj.results.push(element);
     });
-    //  togglePlaceholder(queuedCards);
+
     const arr = handleSuccess(localObj);
     renderModalFilm(arr);
-    watchedBtn.classList.remove('active');
-    queueBtn.classList.add('active');
   }
 }
 
