@@ -3,6 +3,7 @@ import { renderPagination } from '../pagination/pagination';
 import { handleSuccess } from '../componentsJs/generateCardList';
 import { renderModalFilm } from '../templates/renderModalFilm';
 import { handlePagination } from '../componentsJs/generateCardList';
+import showSpinner from '../componentsJs/makeSpinner';
 
 const themoviedbAPI = new ThemoviedbAPI();
 const searchInput = document.querySelector('.search-input');
@@ -19,20 +20,24 @@ export function search(event) {
   event.preventDefault();
 
   if (searchInput.value.trim() === '') {
+    errorText.innerHTML = 'Please enter any text';
     return;
   }
 
   errorText.innerHTML = '';
   currentPage = 1;
+  showSpinner('show');
 
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
       errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
+      showSpinner('hide');
       return;
     }
     const arr = handleSuccess(data);
     processSuccess(data);
     renderModalFilm(arr);
+    showSpinner('hide');
   });
 }
 
