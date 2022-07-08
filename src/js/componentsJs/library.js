@@ -41,9 +41,9 @@ function watchCards() {
     });
     const arr = handleSuccess(localObj);
     renderModalFilm(arr);
+  } else {
+    gallery.innerHTML = '';
   }
-  console.log(localObj);
-  console.log(watchedCards);
 }
 
 function queueCards() {
@@ -59,6 +59,8 @@ function queueCards() {
 
     const arr = handleSuccess(localObj);
     renderModalFilm(arr);
+  } else {
+    gallery.innerHTML = '';
   }
 }
 
