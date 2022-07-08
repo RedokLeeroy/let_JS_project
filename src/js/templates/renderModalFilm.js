@@ -33,6 +33,13 @@ function renderFilms(id) {
     genre_name,
   } = obj;
 
+  let coverImage = 'https://i.ibb.co/JyBCdzw/sinema-empty.jpg';
+  let originPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+
+  if (!poster_path) {
+    originPoster = coverImage;
+  }
+
   const average = vote_average.toString().slice(0, 3);
   const popularityCalc = Math.floor(popularity);
   const genreNames = genre_name.join(', ');
@@ -42,7 +49,7 @@ function renderFilms(id) {
     <div class='modal-container'>
       <button class="btn-close" type="button" data-action='close-modal-1'></button>
       <div class='cont-preview' >
-        <img class='cont-prew__image' src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
+        <img class='cont-prew__image' src=${originPoster} alt="${title}" loading="lazy" />
       </div>
       
       <div class='modal-content'>
