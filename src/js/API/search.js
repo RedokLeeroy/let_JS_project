@@ -20,6 +20,7 @@ export function search(event) {
   event.preventDefault();
 
   if (searchInput.value.trim() === '') {
+    errorText.innerHTML = 'Please enter any text';
     return;
   }
 
