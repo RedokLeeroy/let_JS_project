@@ -3,6 +3,7 @@ import { renderPagination } from '../pagination/pagination';
 import { handleSuccess } from '../componentsJs/generateCardList';
 import { renderModalFilm } from '../templates/renderModalFilm';
 import { handlePagination } from '../componentsJs/generateCardList';
+import showSpinner from '../componentsJs/makeSpinner';
 
 const themoviedbAPI = new ThemoviedbAPI();
 const searchInput = document.querySelector('.search-input');
@@ -24,6 +25,7 @@ export function search(event) {
 
   errorText.innerHTML = '';
   currentPage = 1;
+  showSpinner('show');
 
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
@@ -33,6 +35,7 @@ export function search(event) {
     const arr = handleSuccess(data);
     processSuccess(data);
     renderModalFilm(arr);
+    showSpinner('hide');
   });
 }
 
