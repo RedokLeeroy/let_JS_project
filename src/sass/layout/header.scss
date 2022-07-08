@@ -199,11 +199,6 @@
     margin-right: 16px;
   }
 }
-.header__library-btn:hover,
-.header__library-btn:active {
-  background: #ff6b01;
-  border: 1px solid #ff6b01;
-}
 
 .error {
   margin-top: 20px;
@@ -214,4 +209,14 @@
   font-size: 14px;
   line-height: 1, 14;
   text-align: center;
+}
+.header__library-btn:hover,
+.header__library-btn:active,
+.header__library-btn:target {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+}
+.active {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
 }
