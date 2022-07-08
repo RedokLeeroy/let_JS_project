@@ -9,9 +9,11 @@
 @import './components/modal';
 
 // Components
+@import './components/spinner';
 @import './components/gallary';
 @import './components/pagination'; // Layouts
 @import './layout/header';
 @import './layout/modal-film';
 @import './layout/footer';
 @import './layout/libryari-list';
+@import './components/placeholder';

@@ -1,5 +1,4 @@
 import { createCard } from './createCard';
-// import { handleSuccess } from './generateCardList';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
@@ -8,38 +7,38 @@ const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
 const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 const watchedBtn = document.getElementById('watched-button');
 const queueBtn = document.getElementById('queue-button');
-const main = document.querySelector('main');
-main.style.height = '100vh';
+const libraryPlaceholder = document.querySelector('.placeholder');
 
-let currentPage = 1;
-
-const localArray = [];
-const localObj = {
-  page: currentPage,
-  results: localArray,
-  // total_pages
-};
-// console.log(localObj.results);
-
-console.log(watchedCards);
-
-// export function getFilmLocalStorage(data) {
-//   console.log(data);
-// }
-
-// handleSuccess(localObj);
-
+watchedBtn.classList.add('active');
 gallery.innerHTML = createCard(watchedCards);
+
+if (watchedCards.length !== 0) {
+  libraryPlaceholder.style.display = 'none';
+}
 
 watchedBtn.addEventListener('click', watchCards);
 queueBtn.addEventListener('click', queueCards);
 
 function watchCards(evt) {
   evt.preventDefault();
+  togglePlaceholder(watchedCards);
   gallery.innerHTML = createCard(watchedCards);
+  queueBtn.classList.remove('active');
+  watchedBtn.classList.add('active');
 }
 
 function queueCards(evt) {
   evt.preventDefault();
+  togglePlaceholder(queuedCards);
   gallery.innerHTML = createCard(queuedCards);
+  watchedBtn.classList.remove('active');
+  queueBtn.classList.add('active');
+}
+
+function togglePlaceholder(collection) {
+  if (collection.length) {
+    libraryPlaceholder.style.display = 'none';
+  } else {
+    libraryPlaceholder.style.display = 'block';
+  }
 }
