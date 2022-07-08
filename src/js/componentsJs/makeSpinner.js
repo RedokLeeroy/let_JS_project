@@ -1,7 +1,6 @@
 const spinner = document.querySelector('.load-wrapp');
 
 export default function showSpinner(search) {
-  console.log(search);
   if (search === 'show') {
     spinner.classList.remove('is-hidden');
   }
