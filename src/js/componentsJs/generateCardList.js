@@ -25,7 +25,7 @@ export function handleSuccess(data) {
   }
 
   let newData = data.results;
-  gallery.insertAdjacentHTML('beforeend', createCard(data.results));
+  // gallery.insertAdjacentHTML('beforeend', createCard(data.results));
   gallery.innerHTML = createCard(data.results);
   renderPagination(data.page, data.total_pages);
   container.addEventListener('click', handlePagination);
