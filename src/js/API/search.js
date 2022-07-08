@@ -30,6 +30,7 @@ export function search(event) {
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
       errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
+      showSpinner('hide');
       return;
     }
     const arr = handleSuccess(data);
