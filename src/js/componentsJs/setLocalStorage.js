@@ -1,4 +1,4 @@
-import removeFilmsFromLibrary from './removeCard';
+// import removeFilmsFromLibrary from './removeCard';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
@@ -29,10 +29,9 @@ if (!queuedCards.length) {
   arrayQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 }
 
-export default function addFilmsToLibrary(data) {
+export function addToWatch(data) {
+  console.log('add watch');
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
-  const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
-
   btnAddWatch.addEventListener('click', () => {
     data.inLocalStorage = true;
     data.isWatched = true;
@@ -55,7 +54,11 @@ export default function addFilmsToLibrary(data) {
     arrayWatched.push(data);
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
   });
+}
 
+export function addQueue(data) {
+  console.log('add queue');
+  const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
   btnAddQueie.addEventListener('click', () => {
     data.inLocalStorage = true;
     data.isQueued = true;
@@ -78,12 +81,3 @@ export default function addFilmsToLibrary(data) {
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
   });
 }
-
-function addToWatch() {}
-function addQueue() {}
-
-function removeToWatch() {}
-function removeQueue() {}
-
-// function addFromLibrary() {}
-// function removeFromLibrary() {}

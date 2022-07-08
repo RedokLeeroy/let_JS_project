@@ -2,21 +2,16 @@ import { handleSuccess } from './generateCardList';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
-let currentPage = 1; //----------
+let currentPage = 1;
 
-export default function removeFilmsFromLibrary(data) {
+export function removeFromWatch(data) {
+  console.log('remove watch');
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
-  const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
-
-  const dataPage = document.querySelector('[data-page]'); //-----------
-
+  const dataPage = document.querySelector('[data-page]');
   const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
-  const getCardQueued = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+
   if (data.isWatched) {
     btnAddWatch.textContent = 'Remove';
-  }
-  if (data.isQueued) {
-    btnAddQueie.textContent = 'Remove';
   }
 
   btnAddWatch.addEventListener('click', () => {
@@ -46,11 +41,21 @@ export default function removeFilmsFromLibrary(data) {
     btnAddWatch.textContent = 'Removed!';
     btnAddWatch.disabled = true;
 
-    // if (cardIdWatch.find(el => el === data.id)) {
-    // }
-
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
   });
+}
+
+export function removeFromQueue(data) {
+  console.log('remove queue');
+  const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
+
+  const dataPage = document.querySelector('[data-page]');
+
+  const getCardQueued = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+
+  if (data.isQueued) {
+    btnAddQueie.textContent = 'Remove';
+  }
 
   btnAddQueie.addEventListener('click', () => {
     let cardIdQueue = [];
@@ -78,9 +83,6 @@ export default function removeFilmsFromLibrary(data) {
 
     btnAddQueie.textContent = 'Removed!';
     btnAddQueie.disabled = true;
-
-    // if (cardIdWatch.find(el => el === data.id)) {
-    // }
 
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(newQueuedArray));
   });

@@ -1,25 +1,34 @@
-import addFilmsToLibrary from './setLocalStorage';
-import removeFilmsFromLibrary from './removeCard';
+import { addToWatch } from './setLocalStorage';
+import { addQueue } from './setLocalStorage';
+import { removeFromWatch } from './removeCard';
+import { removeFromQueue } from './removeCard';
+
+const LIBRARY_WATCHED = 'library-watched';
+const LIBRARY_QUEUE = 'library-queie';
 
 export default function manageFilms(data) {
-  const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
-  const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
-  addFilmsToLibrary(data);
-  removeFilmsFromLibrary(data);
+  const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+  const getCardQueued = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 
-  //  addToWatch(data)
-  //  addQueue(data)
+  let cardIdWatch = [];
+  let cardIdQueue = [];
 
-  //  removeToWatch(data)
-  //  removeQueue(data)
+  getCardWatched.map(el => {
+    cardIdWatch.push(el.id);
+  });
+  getCardQueued.map(el => {
+    cardIdQueue.push(el.id);
+  });
 
-  if (data.isWatched) {
+  if (!cardIdWatch.find(el => el === data.id)) {
+    addToWatch(data);
   } else {
-    btnAddWatch.textContent = 'Add to watch';
+    removeFromWatch(data);
   }
 
-  if (data.isQueued) {
+  if (!cardIdQueue.find(el => el === data.id)) {
+    addQueue(data);
   } else {
-    btnAddQueie.textContent = 'Add to Queue';
+    removeFromQueue(data);
   }
 }
