@@ -1,3 +1,5 @@
+import removeFilmsFromLibrary from './removeCard';
+
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 
@@ -11,14 +13,14 @@ if (!watchedCards) {
   localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
 }
 
-if (!queuedCards) {
-  localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
-}
-
 if (!watchedCards.length) {
   localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
 } else {
   arrayWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+}
+
+if (!queuedCards) {
+  localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
 }
 
 if (!queuedCards.length) {
@@ -76,3 +78,12 @@ export default function addFilmsToLibrary(data) {
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
   });
 }
+
+function addToWatch() {}
+function addQueue() {}
+
+function removeToWatch() {}
+function removeQueue() {}
+
+// function addFromLibrary() {}
+// function removeFromLibrary() {}
