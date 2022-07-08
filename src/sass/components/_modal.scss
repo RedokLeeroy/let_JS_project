@@ -4,7 +4,6 @@
 
 .tim {
   background: rgb(0, 0, 0);
-
   position: fixed;
   overflow: auto;
   top: 0;
@@ -15,18 +14,7 @@
   max-height: 100vh;
 
   @include mq(tablet) {
-    max-width: 704px;
     overflow: hidden;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    margin-bottom: 30px;
-  }
-
-  @include mq(desktop) {
-    max-width: 1150px;
-    padding-bottom: 0;
   }
 }
 
@@ -38,7 +26,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: #ffffff;
+  color: #fffefe;
   font-size: 20px;
 }
 
@@ -66,7 +54,6 @@
   @include mq(tablet) {
     font-size: 20px;
     line-height: 1.2;
-    margin-bottom: 10px;
   }
 
   @include mq(desktop) {
@@ -88,15 +75,10 @@
 
   @include mq(tablet) {
     justify-content: space-evenly;
-    padding: 20px;
   }
 
   @include mq(desktop) {
     justify-content: space-around;
-    padding: 30px;
-    max-width: 950px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
@@ -107,18 +89,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 165px;
+    max-width: 200px;
     margin: 15px;
     justify-content: center;
     margin-bottom: 10px;
   }
 
   @include mq(desktop) {
-    max-width: 250px;
+    max-width: 400px;
     margin-bottom: 15px;
-    margin-left: 10px;
-    margin-left: 10px;
-    margin-top: 10px;
   }
 }
 
