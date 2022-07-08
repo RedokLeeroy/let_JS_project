@@ -1,4 +1,3 @@
-import { createCard } from './createCard';
 import { handleSuccess } from './generateCardList';
 import { renderModalFilm } from '../templates/renderModalFilm';
 
@@ -19,36 +18,34 @@ const localObj = {
   results: [],
   total_pages: 0,
   inLocalStorage: true,
+  isWatched: false,
 };
 
-if (watchedCards.length !== 0) {
-  watchedCards.forEach(element => {
-    localObj.results.push(element);
-  });
-
-  const arr = handleSuccess(localObj);
-  renderModalFilm(arr);
-}
-if (queuedCards.length !== 0) {
-  queuedCards.forEach(element => {
-    localObj.results.push(element);
-  });
-
-  const arr = handleSuccess(localObj);
-  renderModalFilm(arr);
-}
-
-gallery.innerHTML = createCard(watchedCards);
+// watchCards();
 
 watchedBtn.addEventListener('click', watchCards);
 queueBtn.addEventListener('click', queueCards);
 
 function watchCards(evt) {
-  evt.preventDefault();
-  gallery.innerHTML = createCard(watchedCards);
+  gallery.innerHTML = '';
+  if (watchedCards.length !== 0) {
+    watchedCards.forEach(element => {
+      localObj.results.push(element);
+    });
+
+    const arr = handleSuccess(localObj);
+    renderModalFilm(arr);
+  }
 }
 
 function queueCards(evt) {
-  evt.preventDefault();
-  gallery.innerHTML = createCard(queuedCards);
+  gallery.innerHTML = '';
+  if (queuedCards.length !== 0) {
+    queuedCards.forEach(element => {
+      localObj.results.push(element);
+    });
+
+    const arr = handleSuccess(localObj);
+    renderModalFilm(arr);
+  }
 }
