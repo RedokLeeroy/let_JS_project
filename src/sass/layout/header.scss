@@ -200,8 +200,7 @@
   }
 }
 .header__library-btn:hover,
-.header__library-btn:active,
-.header__library-btn:target {
+.header__library-btn:active {
   background: #ff6b01;
   border: 1px solid #ff6b01;
 }
@@ -215,9 +214,4 @@
   font-size: 14px;
   line-height: 1, 14;
   text-align: center;
-}
-
-.active {
-  background: #ff6b01;
-  border: 1px solid #ff6b01;
 }
