@@ -15,8 +15,6 @@ function toggleModal(event) {
   } else {
     document.body.style.overflow = 'hidden';
   }
-}
-export default function callModal() {
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       return toggleModal(event);
