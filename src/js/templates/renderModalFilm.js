@@ -4,8 +4,7 @@ import manageFilms from '../componentsJs/manageFilms';
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 
-const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
-const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+
 
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
@@ -26,6 +25,8 @@ function onclick(evt) {
 }
 
 function renderFilms(id) {
+  const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+  const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
   const obj = cards.find(option => option.id === Number(id));
   addLib = obj;
   const {
@@ -46,8 +47,8 @@ function renderFilms(id) {
     originPoster = coverImage;
   }
 
-  const inWatched = watchedCards.find(element => element.isWatched);
-  const inQueued = queuedCards.find(element => element.isQueued);
+  const inWatchedId = watchedCards.find(element => element.id === Number(id))
+  const inQueuedId = queuedCards.find(element => element.id === Number(id))
 
   const average = vote_average.toString().slice(0, 3);
   const popularityCalc = Math.floor(popularity);
@@ -93,12 +94,12 @@ function renderFilms(id) {
         <ul class='btn-list'>
           <li class='btn-list__item'>
            <button class='btn-list__item-btn--add' type="button">${
-             inWatched ? 'remove' : 'add to watched'
+            inWatchedId ? 'remove' : 'add to watched'
            }</button>
           </li>
           <li class='btn-list__item'>
             <button class='btn-list__item-btn--queie' type="button">${
-              inQueued ? 'remove' : 'add to queued'
+              inQueuedId ? 'remove' : 'add to queued'
             }</button>
           </li>
         </ul>
