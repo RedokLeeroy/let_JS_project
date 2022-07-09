@@ -15,18 +15,19 @@
   max-height: 100vh;
 
   @include mq(tablet) {
-    max-width: 704px;
+    max-width: 560px;
     overflow: hidden;
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-bottom: 30px;
   }
 
   @include mq(desktop) {
-    max-width: 1150px;
+    max-width: 950px;
     padding-bottom: 0;
+    margin-top: 50px;
   }
 }
 
@@ -88,13 +89,13 @@
 
   @include mq(tablet) {
     justify-content: space-evenly;
-    padding: 20px;
+    // padding: 20px;
   }
 
   @include mq(desktop) {
     justify-content: space-around;
     padding: 30px;
-    max-width: 950px;
+    // max-width: 950px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -102,19 +103,19 @@
 
 .tim__list {
   margin-bottom: 30px;
-
+  text-align: center;
   @include mq(tablet) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 165px;
+    max-width: 130px;
     margin: 15px;
     justify-content: center;
     margin-bottom: 10px;
   }
 
   @include mq(desktop) {
-    max-width: 250px;
+    max-width: 200px;
     margin-bottom: 15px;
     margin-left: 10px;
     margin-left: 10px;
@@ -156,8 +157,8 @@
   }
 
   @include mq(desktop) {
-    font-size: 20px;
-    line-height: 1.2;
+    font-size: 15px;
+    line-height: 1.1;
   }
 }
 
