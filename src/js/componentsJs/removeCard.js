@@ -1,8 +1,8 @@
 import { handleSuccess } from './generateCardList';
-// import { watchCards } from './library';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
+
 let currentPage = 1;
 
 export function removeFromWatch(data) {
@@ -51,7 +51,6 @@ export function removeFromWatch(data) {
     document.body.classList.remove('hidden');
 
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
-    // watchCards()
   });
 
 }

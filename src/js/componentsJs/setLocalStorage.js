@@ -1,5 +1,3 @@
-// import removeFilmsFromLibrary from './removeCard';
-
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 
@@ -30,7 +28,6 @@ if (!queuedCards.length) {
 }
 
 export function addToWatch(data) {
-  console.log('add watch');
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
 
   btnAddWatch.addEventListener('click', () => {
@@ -53,12 +50,12 @@ export function addToWatch(data) {
     }
 
     arrayWatched.push(data);
+
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(arrayWatched));
   });
 }
 
 export function addQueue(data) {
-  console.log('add queue');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
 
   btnAddQueie.addEventListener('click', () => {
@@ -70,7 +67,6 @@ export function addQueue(data) {
 
     const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 
-
     let cardIdQueue = [];
 
     getCardQueue.map(el => {
@@ -80,7 +76,9 @@ export function addQueue(data) {
     if (cardIdQueue.find(el => el === data.id)) {
       return;
     }
+    
     arrayQueue.push(data);
+
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(arrayQueue));
   });
 }
