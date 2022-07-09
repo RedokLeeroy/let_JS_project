@@ -32,6 +32,7 @@ if (!queuedCards.length) {
 export function addToWatch(data) {
   console.log('add watch');
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
+
   btnAddWatch.addEventListener('click', () => {
     data.inLocalStorage = true;
     data.isWatched = true;
@@ -59,6 +60,7 @@ export function addToWatch(data) {
 export function addQueue(data) {
   console.log('add queue');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
+
   btnAddQueie.addEventListener('click', () => {
     data.inLocalStorage = true;
     data.isQueued = true;
@@ -67,6 +69,7 @@ export function addQueue(data) {
     btnAddQueie.disabled = true;
 
     const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+
 
     let cardIdQueue = [];
 

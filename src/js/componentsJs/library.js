@@ -4,8 +4,8 @@ import { renderModalFilm } from '../templates/renderModalFilm';
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 const gallery = document.querySelector('.gallery');
-const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
-const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+// const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+// const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 const watchedBtn = document.getElementById('watched-button');
 const queueBtn = document.getElementById('queue-button');
 const libraryPlaceholder = document.querySelector('.placeholder');
@@ -22,14 +22,13 @@ const localObj = {
 };
 
 watchCards();
-if (watchedCards.length !== 0) {
-  libraryPlaceholder.style.display = 'none';
-}
 
 watchedBtn.addEventListener('click', watchCards);
 queueBtn.addEventListener('click', queueCards);
 
 function watchCards() {
+  const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+  localObj.results = [];
   togglePlaceholder(watchedCards);
   queueBtn.classList.remove('active');
   watchedBtn.classList.add('active');
@@ -43,10 +42,13 @@ function watchCards() {
     renderModalFilm(arr);
   } else {
     gallery.innerHTML = '';
+    // togglePlaceholder(watchedCards);
   }
 }
 
 function queueCards() {
+  const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+  localObj.results = [];
   togglePlaceholder(queuedCards);
   watchedBtn.classList.remove('active');
   queueBtn.classList.add('active');

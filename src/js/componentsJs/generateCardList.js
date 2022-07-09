@@ -17,7 +17,7 @@ export function getApiList() {
 }
 
 export function handleSuccess(data) {
-  console.log(data);
+  // console.log(data);
   if (!data.inLocalStorage) {
     data.results.forEach(element => {
       const genreName = serchGenre(element.genre_ids);
