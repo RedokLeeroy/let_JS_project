@@ -1,13 +1,15 @@
 import { handleSuccess } from './generateCardList';
+// import { watchCards } from './library';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 let currentPage = 1;
 
 export function removeFromWatch(data) {
-  console.log('remove watch');
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
   const dataPage = document.querySelector('[data-page]');
+  const libraryPlaceholder = document.querySelector('.placeholder');
+  const modalFilmCard = document.querySelector('.modal-film');
   const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
 
   if (data.isWatched) {
@@ -15,6 +17,7 @@ export function removeFromWatch(data) {
   }
 
   btnAddWatch.addEventListener('click', () => {
+
     let cardIdWatch = [];
     let newWatchedArray = getCardWatched.filter(el => el.id !== data.id);
 
@@ -25,7 +28,10 @@ export function removeFromWatch(data) {
     if (!cardIdWatch.find(el => el === data.id)) {
       return;
     }
-
+    if(!newWatchedArray.length && dataPage.dataset.page === 'library'){
+      libraryPlaceholder.style.display = 'block'
+    }
+    
     const localObj = {
       page: currentPage,
       results: newWatchedArray,
@@ -41,15 +47,21 @@ export function removeFromWatch(data) {
     btnAddWatch.textContent = 'Removed!';
     btnAddWatch.disabled = true;
 
+    modalFilmCard.innerHTML=''
+    document.body.classList.remove('hidden');
+
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
+    // watchCards()
   });
+
 }
 
 export function removeFromQueue(data) {
-  console.log('remove queue');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
 
   const dataPage = document.querySelector('[data-page]');
+  const libraryPlaceholder = document.querySelector('.placeholder');
+  const modalFilmCard = document.querySelector('.modal-film');
 
   const getCardQueued = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 
@@ -69,6 +81,10 @@ export function removeFromQueue(data) {
       return;
     }
 
+    if(!newQueuedArray.length && dataPage.dataset.page === 'library'){
+      libraryPlaceholder.style.display = 'block'
+    }
+
     const localObj = {
       page: currentPage,
       results: newQueuedArray,
@@ -83,6 +99,9 @@ export function removeFromQueue(data) {
 
     btnAddQueie.textContent = 'Removed!';
     btnAddQueie.disabled = true;
+
+    modalFilmCard.innerHTML=''
+    document.body.classList.remove('hidden');
 
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(newQueuedArray));
   });
