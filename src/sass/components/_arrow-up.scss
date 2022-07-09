@@ -1,7 +1,7 @@
 #return-to-top {
   position: fixed;
-  bottom: 100px;
-  right: 50px;
+  bottom: 50px;
+  right: 10px;
   //   background: rgb(0, 0, 0);
   background: #ff6b08d3;
 
@@ -19,6 +19,14 @@
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  @include mq(tablet) {
+    bottom: 25px;
+    right: 40px;
+  }
+  @include mq(desktop) {
+    bottom: 90px;
+    right: 40px;
+  }
 }
 #return-to-top img {
   color: #fff;
