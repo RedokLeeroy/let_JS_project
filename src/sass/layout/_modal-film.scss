@@ -42,7 +42,7 @@
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   @include mq(tablet) {
     max-width: 704px;
-
+    overflow: hidden;
     display: flex;
     padding: 40px 72px 40px 40px;
 
