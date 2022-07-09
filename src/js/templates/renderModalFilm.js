@@ -1,6 +1,12 @@
 import closeModal from '../componentsJs/toogleModal';
 import manageFilms from '../componentsJs/manageFilms';
 
+const LIBRARY_WATCHED = 'library-watched';
+const LIBRARY_QUEUE = 'library-queie';
+
+const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
 
@@ -40,6 +46,9 @@ function renderFilms(id) {
     originPoster = coverImage;
   }
 
+  const inWatched = watchedCards.find(element => element.isWatched);
+  const inQueued = queuedCards.find(element => element.isQueued);
+
   const average = vote_average.toString().slice(0, 3);
   const popularityCalc = Math.floor(popularity);
   const genreNames = genre_name.join(', ');
@@ -49,7 +58,7 @@ function renderFilms(id) {
     <div class='modal-container'>
       <button class="btn-close" type="button" data-action='close-modal-1'></button>
       <div class='cont-preview' >
-        <img class='cont-prew__image' src=${originPoster} alt="${title}" loading="lazy" />
+        <img class='cont-prew__image' src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy" />
       </div>
       
       <div class='modal-content'>
@@ -83,10 +92,14 @@ function renderFilms(id) {
           <p class='descr-text-content '> ${overview}</p>
         <ul class='btn-list'>
           <li class='btn-list__item'>
-           <button class='btn-list__item-btn--add' type="button">add to Watched</button>
+           <button class='btn-list__item-btn--add' type="button">${
+             inWatched ? 'remove' : 'add to watched'
+           }</button>
           </li>
           <li class='btn-list__item'>
-            <button class='btn-list__item-btn--queie' type="button">add to queue</button>
+            <button class='btn-list__item-btn--queie' type="button">${
+              inQueued ? 'remove' : 'add to queued'
+            }</button>
           </li>
         </ul>
       </div>
