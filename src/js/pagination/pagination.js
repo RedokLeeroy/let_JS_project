@@ -1,12 +1,8 @@
-import { ThemoviedbAPI } from '../API/themoviedb-api';
-
 const refs = {
   container: document.querySelector('.pagination-container'),
   leftArrow: document.querySelector('.left-arrow'),
   rightArrow: document.querySelector('.rightArrow'),
 };
-
-const themoviedbAPI = new ThemoviedbAPI();
 
 export function renderPagination(page, totalPages) {
   if (!page || !totalPages || totalPages === 1) {

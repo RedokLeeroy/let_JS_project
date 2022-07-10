@@ -28,4 +28,3 @@ if (!queuedCards.length) {
 } else {
   arrayQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 }
-console.log(123);

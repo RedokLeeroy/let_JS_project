@@ -14,7 +14,7 @@ export function addToWatch(data) {
     btnAddWatch.disabled = true;
 
     const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
-    arrayWatched = getCardWatched
+    arrayWatched = getCardWatched;
 
     let cardIdWatch = [];
 
@@ -33,7 +33,6 @@ export function addToWatch(data) {
 
 export function addQueue(data) {
   let arrayQueue = [];
-  console.log('add queue');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
 
   btnAddQueie.addEventListener('click', () => {
@@ -44,7 +43,7 @@ export function addQueue(data) {
     btnAddQueie.disabled = true;
 
     const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
-    arrayQueue =getCardQueue
+    arrayQueue = getCardQueue;
 
     let cardIdQueue = [];
 

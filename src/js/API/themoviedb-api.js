@@ -17,8 +17,8 @@ export class ThemoviedbAPI {
       return await fetch(
         `${this.BASE_URL}${trending}/${mediaType}/${timeWindow}${this.API_KEY}&page=${page}`
       ).then(res => res.json());
-    } catch (err) {
-      console.log(err);
+    } catch (arr) {
+      console.log(arr);
     }
   }
 
@@ -28,7 +28,7 @@ export class ThemoviedbAPI {
         `${this.BASE_URL}search/movie${this.API_KEY}&query=${keyword}&page=${page}`
       ).then(res => res.json());
     } catch (arr) {
-      console.log(err);
+      console.log(arr);
     }
   }
 
@@ -42,7 +42,7 @@ export class ThemoviedbAPI {
         `${this.BASE_URL}${genre}/${option}/${list}${this.API_KEY}`
       ).then(res => res.json());
     } catch (arr) {
-      console.log(err);
+      console.log(arr);
     }
   }
 
