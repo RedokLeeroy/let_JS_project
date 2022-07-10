@@ -11,9 +11,6 @@ export default function closeModal(top) {
     htmlElement.style.top = null
     htmlElement.style.left = null
     htmlElement.classList.remove('hidden');
-    // document.body.style.top = null
-    // document.body.classList.remove('hidden');
-    console.log(top);
     window.scrollTo({top: top})
   });
   backdropClose.addEventListener('click', evt => {
@@ -23,9 +20,6 @@ export default function closeModal(top) {
       htmlElement.style.top = null
       htmlElement.style.left = null
       htmlElement.classList.remove('hidden');
-      // document.body.style.top = null
-      // document.body.classList.remove('hidden');
-      console.log(top);
       window.scrollTo({top: top})
     }
   });
@@ -39,9 +33,6 @@ export default function closeModal(top) {
       htmlElement.style.top = null
       htmlElement.style.left = null
       htmlElement.classList.remove('hidden');
-      // document.body.style.top = null
-      // document.body.classList.remove('hidden');
-      console.log(top);
       window.scrollTo({top: top})
     }
   }
