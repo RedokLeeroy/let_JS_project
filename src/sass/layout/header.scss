@@ -202,7 +202,7 @@
 }
 
 .error {
-  width: 270px;
+  width: 240px;
   position: absolute;
   color: #ff001b;
   margin-top: 20px;
@@ -212,11 +212,15 @@
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
+
   @include mq(tablet) {
     width: 400px;
+    text-align: center;
+  }
+  @include mq(desktop) {
+    text-align: center;
   }
 }
-
 .empty {
   transform: translate(50%);
   right: 50%;
