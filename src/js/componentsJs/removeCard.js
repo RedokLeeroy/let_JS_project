@@ -11,13 +11,13 @@ export function removeFromWatch(data) {
   const libraryPlaceholder = document.querySelector('.placeholder');
   const modalFilmCard = document.querySelector('.modal-film');
   const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+  const doc = document.querySelector('html');
 
   if (data.isWatched) {
     btnAddWatch.textContent = 'Remove';
   }
 
   btnAddWatch.addEventListener('click', () => {
-
     let cardIdWatch = [];
     let newWatchedArray = getCardWatched.filter(el => el.id !== data.id);
 
@@ -28,10 +28,10 @@ export function removeFromWatch(data) {
     if (!cardIdWatch.find(el => el === data.id)) {
       return;
     }
-    if(!newWatchedArray.length && dataPage.dataset.page === 'library'){
-      libraryPlaceholder.style.display = 'block'
+    if (!newWatchedArray.length && dataPage.dataset.page === 'library') {
+      libraryPlaceholder.style.display = 'block';
     }
-    
+
     const localObj = {
       page: currentPage,
       results: newWatchedArray,
@@ -47,17 +47,16 @@ export function removeFromWatch(data) {
     btnAddWatch.textContent = 'Removed!';
     btnAddWatch.disabled = true;
 
-    modalFilmCard.innerHTML=''
-    document.body.classList.remove('hidden');
+    modalFilmCard.innerHTML = '';
+    doc.classList.remove('hidden');
 
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
-    // watchCards()
   });
-
 }
 
 export function removeFromQueue(data) {
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
+  const doc = document.querySelector('html');
 
   const dataPage = document.querySelector('[data-page]');
   const libraryPlaceholder = document.querySelector('.placeholder');
@@ -81,8 +80,8 @@ export function removeFromQueue(data) {
       return;
     }
 
-    if(!newQueuedArray.length && dataPage.dataset.page === 'library'){
-      libraryPlaceholder.style.display = 'block'
+    if (!newQueuedArray.length && dataPage.dataset.page === 'library') {
+      libraryPlaceholder.style.display = 'block';
     }
 
     const localObj = {
@@ -100,8 +99,8 @@ export function removeFromQueue(data) {
     btnAddQueie.textContent = 'Removed!';
     btnAddQueie.disabled = true;
 
-    modalFilmCard.innerHTML=''
-    document.body.classList.remove('hidden');
+    modalFilmCard.innerHTML = '';
+    doc.classList.remove('hidden');
 
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(newQueuedArray));
   });
