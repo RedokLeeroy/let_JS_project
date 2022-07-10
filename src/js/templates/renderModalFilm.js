@@ -3,14 +3,18 @@ import manageFilms from '../componentsJs/manageFilms';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
-
-
-
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
+const htmlElement = document.querySelector('html')
 
+let positionFromTop
 let addLib;
 let cards;
+
+function getYPosition(){
+  let positionFromTop = window.pageYOffset || document.documentElement.scrollTop
+  return positionFromTop;
+}
 
 function onclick(evt) {
   if (!evt.target.closest('li')) {
@@ -18,10 +22,13 @@ function onclick(evt) {
   }
   const ids = evt.target.closest('li').id;
   renderFilms(ids);
-  closeModal();
   manageFilms(addLib);
+  positionFromTop = getYPosition();
+  closeModal(positionFromTop);
 
-  document.body.classList.add('hidden');
+  htmlElement.style.top = ` -${positionFromTop}px`
+  htmlElement.style.left = `0px`
+  htmlElement.classList.add('hidden');
 }
 
 function renderFilms(id) {
