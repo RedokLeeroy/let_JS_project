@@ -1,18 +1,32 @@
-export default function closeModal() {
+export default function closeModal(top) {
   const closeModalBtn = document.querySelector('[data-action="close-modal-1"]');
   const modalFilmCard = document.querySelector('.modal-film');
   const backdropClose = document.querySelector('.backdrop');
+  const htmlElement = document.querySelector('html')
 
   closeModalBtn.addEventListener('click', evt => {
     modalFilmCard.innerHTML = '';
 
-    document.body.classList.remove('hidden');
+    
+    htmlElement.style.top = null
+    htmlElement.style.left = null
+    htmlElement.classList.remove('hidden');
+    // document.body.style.top = null
+    // document.body.classList.remove('hidden');
+    console.log(top);
+    window.scrollTo({top: top})
   });
   backdropClose.addEventListener('click', evt => {
     if (evt.currentTarget === evt.target) {
       modalFilmCard.innerHTML = '';
 
-      document.body.classList.remove('hidden');
+      htmlElement.style.top = null
+      htmlElement.style.left = null
+      htmlElement.classList.remove('hidden');
+      // document.body.style.top = null
+      // document.body.classList.remove('hidden');
+      console.log(top);
+      window.scrollTo({top: top})
     }
   });
   window.addEventListener('keydown', onEscape);
@@ -22,7 +36,13 @@ export default function closeModal() {
       modalFilmCard.innerHTML = '';
       window.removeEventListener('keydown', onEscape);
 
-      document.body.classList.remove('hidden');
+      htmlElement.style.top = null
+      htmlElement.style.left = null
+      htmlElement.classList.remove('hidden');
+      // document.body.style.top = null
+      // document.body.classList.remove('hidden');
+      console.log(top);
+      window.scrollTo({top: top})
     }
   }
 }

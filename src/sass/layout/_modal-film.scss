@@ -1,5 +1,7 @@
 .hidden {
-  overflow-y: hidden;
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .is-close {
