@@ -52,6 +52,7 @@
   }
   @include mq(desktop) {
     display: flex;
+    overflow: hidden;
     max-width: 806px;
     height: 558px;
     margin-left: auto;
