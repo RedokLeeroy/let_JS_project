@@ -20,7 +20,9 @@ export function search(event) {
   event.preventDefault();
 
   if (searchInput.value.trim() === '') {
+    errorText.classList.add('empty');
     errorText.innerHTML = 'Please enter any text';
+    errorText.classList.add('empty');
     return;
   }
 
@@ -31,6 +33,7 @@ export function search(event) {
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
       errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
+      errorText.style.color = '#ff001b';
       showSpinner('hide');
       return;
     }

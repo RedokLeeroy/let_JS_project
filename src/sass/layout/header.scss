@@ -114,6 +114,7 @@
   display: flex;
 }
 .search-form {
+  position: relative;
   width: 100%;
   padding-bottom: 92px;
   @include mq(tablet) {
@@ -133,7 +134,7 @@
   outline: transparent;
   border: none;
   color: #ffffff;
-  min-width: 260px;
+  min-width: 250px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -201,15 +202,33 @@
 }
 
 .error {
-  margin-top: 20px;
+
+  width: 240px;
+  position: absolute;
   color: #ff001b;
+
+  margin-top: 20px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1, 14;
+  line-height: 1.14;
   text-align: center;
+
+  @include mq(tablet) {
+    width: 400px;
+    text-align: center;
+  }
+  @include mq(desktop) {
+    text-align: center;
+  }
 }
+
+.empty {
+  transform: translate(50%);
+  right: 50%;
+}
+
 .header__library-btn:hover,
 .header__library-btn:active,
 .header__library-btn:target {
