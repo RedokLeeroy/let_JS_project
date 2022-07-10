@@ -202,9 +202,11 @@
 }
 
 .error {
+
   width: 240px;
   position: absolute;
   color: #ff001b;
+
   margin-top: 20px;
   font-family: 'Roboto';
   font-style: normal;
@@ -221,6 +223,7 @@
     text-align: center;
   }
 }
+
 .empty {
   transform: translate(50%);
   right: 50%;
