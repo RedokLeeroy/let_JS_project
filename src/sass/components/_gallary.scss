@@ -96,15 +96,14 @@
 .watched::before {
   position: absolute;
   background-color: #ff6b01;
-  transform: translateY(10%);
+  top: 0;
 
   content: url('../images/icon/film.svg');
 }
-.queued::before {
+.queued::after {
   position: absolute;
   background-color: #ff6b01;
   right: 0;
-
-  transform: translateY(10%);
+  top: 0;
   content: url('../images/icon/star-empty.svg');
 }
