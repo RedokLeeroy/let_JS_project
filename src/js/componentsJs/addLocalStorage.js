@@ -3,7 +3,7 @@ const LIBRARY_QUEUE = 'library-queie';
 
 export function addToWatch(data) {
   let arrayWatched = [];
-  console.log('add watch');
+
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
 
   btnAddWatch.addEventListener('click', () => {
@@ -32,7 +32,7 @@ export function addToWatch(data) {
 
 export function addQueue(data) {
   let arrayQueue = [];
-  console.log('add queue');
+
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
 
   btnAddQueie.addEventListener('click', () => {
@@ -40,10 +40,11 @@ export function addQueue(data) {
     data.isQueued = true;
 
     btnAddQueie.textContent = 'Added!';
+    imageDiv.classList.add('queued');
+
     btnAddQueie.disabled = true;
 
     const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
-
 
     let cardIdQueue = [];
 

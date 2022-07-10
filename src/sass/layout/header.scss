@@ -202,7 +202,6 @@
 }
 
 .error {
-  position: absolute;
   color: transparent;
   margin-top: 20px;
   font-family: 'Roboto';
@@ -211,11 +210,6 @@
   font-size: 14px;
   line-height: 1, 14;
   text-align: center;
-}
-
-.empty {
-  transform: translate(50%);
-  right: 50%;
 }
 
 .header__library-btn:hover,
