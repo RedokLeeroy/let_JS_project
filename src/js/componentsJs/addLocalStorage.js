@@ -40,8 +40,6 @@ export function addQueue(data) {
     data.isQueued = true;
 
     btnAddQueie.textContent = 'Added!';
-    imageDiv.classList.add('queued');
-
     btnAddQueie.disabled = true;
 
     const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
