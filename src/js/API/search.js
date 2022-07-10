@@ -22,6 +22,7 @@ export function search(event) {
   if (searchInput.value.trim() === '') {
     errorText.classList.add('empty');
     errorText.innerHTML = 'Please enter any text';
+    errorText.classList.add('empty');
     return;
   }
 
