@@ -14,6 +14,7 @@ export function addToWatch(data) {
     btnAddWatch.disabled = true;
 
     const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+    arrayWatched = getCardWatched
 
     let cardIdWatch = [];
 
@@ -43,7 +44,7 @@ export function addQueue(data) {
     btnAddQueie.disabled = true;
 
     const getCardQueue = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
-
+    arrayQueue =getCardQueue
 
     let cardIdQueue = [];
 
