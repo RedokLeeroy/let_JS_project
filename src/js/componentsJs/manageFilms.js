@@ -1,5 +1,5 @@
-import { addToWatch } from './setLocalStorage';
-import { addQueue } from './setLocalStorage';
+import { addToWatch } from './addLocalStorage';
+import { addQueue } from './addLocalStorage';
 import { removeFromWatch } from './removeCard';
 import { removeFromQueue } from './removeCard';
 

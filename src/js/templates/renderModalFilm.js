@@ -1,11 +1,20 @@
 import closeModal from '../componentsJs/toogleModal';
 import manageFilms from '../componentsJs/manageFilms';
 
+const LIBRARY_WATCHED = 'library-watched';
+const LIBRARY_QUEUE = 'library-queie';
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
+const htmlElement = document.querySelector('html')
 
+let positionFromTop
 let addLib;
 let cards;
+
+function getYPosition(){
+  let positionFromTop = window.pageYOffset || document.documentElement.scrollTop
+  return positionFromTop;
+}
 
 function onclick(evt) {
   if (!evt.target.closest('li')) {
@@ -13,13 +22,18 @@ function onclick(evt) {
   }
   const ids = evt.target.closest('li').id;
   renderFilms(ids);
-  closeModal();
   manageFilms(addLib);
+  positionFromTop = getYPosition();
+  closeModal(positionFromTop);
 
-  document.body.classList.add('hidden');
+  htmlElement.style.top = ` -${positionFromTop}px`
+  htmlElement.style.left = `0px`
+  htmlElement.classList.add('hidden');
 }
 
 function renderFilms(id) {
+  const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+  const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
   const obj = cards.find(option => option.id === Number(id));
   addLib = obj;
   const {
@@ -32,6 +46,16 @@ function renderFilms(id) {
     title,
     genre_name,
   } = obj;
+
+  let coverImage = 'https://i.ibb.co/JyBCdzw/sinema-empty.jpg';
+  let originPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+
+  if (!poster_path) {
+    originPoster = coverImage;
+  }
+
+  const inWatchedId = watchedCards.find(element => element.id === Number(id))
+  const inQueuedId = queuedCards.find(element => element.id === Number(id))
 
   const average = vote_average.toString().slice(0, 3);
   const popularityCalc = Math.floor(popularity);
@@ -76,10 +100,14 @@ function renderFilms(id) {
           <p class='descr-text-content '> ${overview}</p>
         <ul class='btn-list'>
           <li class='btn-list__item'>
-           <button class='btn-list__item-btn--add' type="button">add to Watched</button>
+           <button class='btn-list__item-btn--add' type="button">${
+            inWatchedId ? 'remove' : 'add to watched'
+           }</button>
           </li>
           <li class='btn-list__item'>
-            <button class='btn-list__item-btn--queie' type="button">add to queue</button>
+            <button class='btn-list__item-btn--queie' type="button">${
+              inQueuedId ? 'remove' : 'add to queued'
+            }</button>
           </li>
         </ul>
       </div>

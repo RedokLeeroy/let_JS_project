@@ -16,7 +16,7 @@
 
 .card_item {
   min-height: 438px;
-  // background: rgba(0, 0, 0, 0.514);
+  cursor: pointer;
 
   @include mq(tablet) {
     min-height: 495px;
@@ -28,9 +28,9 @@
 }
 
 .card__image {
+  position: relative;
   overflow: hidden;
   border-radius: 5px;
-  // height: 100%;
 
   margin-bottom: 10px;
 
@@ -81,19 +81,29 @@
   padding: 0 3px;
 }
 
-.card__average{
+.card__average {
   display: none;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-
-  // align-items: center;
   text-transform: uppercase;
-
   margin-left: 9px;
   padding: 1px 6px;
   border-radius: 5px;
-  color: #FFFFFF;
-  
+  color: #ffffff;
   background: $card-genre-color;
+}
+.watched::before {
+  position: absolute;
+  background-color: #ff6b01;
+  top: 0;
+
+  content: url('../images/icon/film.svg');
+}
+.queued::after {
+  position: absolute;
+  background-color: #ff6b01;
+  right: 0;
+  top: 0;
+  content: url('../images/icon/star-empty.svg');
 }

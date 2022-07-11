@@ -1,5 +1,7 @@
 .hidden {
-  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .is-close {
@@ -25,6 +27,8 @@
 
 .modal-container {
   max-width: 280px;
+  height: 510px;
+  overflow: auto;
   margin-left: 20px;
   margin-right: 20px;
   position: relative;
@@ -40,6 +44,7 @@
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   @include mq(tablet) {
     max-width: 704px;
+    overflow: auto;
 
     display: flex;
     padding: 40px 72px 40px 40px;
@@ -49,6 +54,7 @@
   }
   @include mq(desktop) {
     display: flex;
+    overflow: hidden;
     max-width: 806px;
     height: 558px;
     margin-left: auto;
@@ -192,7 +198,6 @@
   line-height: 1.3;
   text-transform: uppercase;
   background-color: transparent;
-  color: $card-titel-color;
   border: 1px solid $card-titel-color;
   &:hover {
     border: none;

@@ -1,38 +1,69 @@
-import { createCard } from './createCard';
+import { handleSuccess } from './generateCardList';
+import { renderModalFilm } from '../templates/renderModalFilm';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 const gallery = document.querySelector('.gallery');
-const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
-const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+// const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+// const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 const watchedBtn = document.getElementById('watched-button');
 const queueBtn = document.getElementById('queue-button');
 const libraryPlaceholder = document.querySelector('.placeholder');
 
-watchedBtn.classList.add('active');
-gallery.innerHTML = createCard(watchedCards);
+let currentPage = 1;
 
-if (watchedCards.length !== 0) {
-  libraryPlaceholder.style.display = 'none';
-}
+const localObj = {
+  page: currentPage,
+  results: [],
+  total_pages: 0,
+  inLocalStorage: true,
+  isWatched: false,
+  isQueued: false,
+};
+
+watchCards();
 
 watchedBtn.addEventListener('click', watchCards);
 queueBtn.addEventListener('click', queueCards);
 
-function watchCards(evt) {
-  evt.preventDefault();
+function watchCards() {
+  const watchedCards = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
+  localObj.results = [];
   togglePlaceholder(watchedCards);
-  gallery.innerHTML = createCard(watchedCards);
   queueBtn.classList.remove('active');
   watchedBtn.classList.add('active');
+
+  if (watchedCards.length !== 0) {
+    localObj.results = [];
+    watchedCards.forEach(element => {
+      localObj.results.push(element);
+    });
+    const arr = handleSuccess(localObj);
+    renderModalFilm(arr);
+  } else {
+    gallery.innerHTML = '';
+    // togglePlaceholder(watchedCards);
+  }
 }
 
-function queueCards(evt) {
-  evt.preventDefault();
+function queueCards() {
+  const queuedCards = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
+  localObj.results = [];
   togglePlaceholder(queuedCards);
-  gallery.innerHTML = createCard(queuedCards);
   watchedBtn.classList.remove('active');
   queueBtn.classList.add('active');
+
+  if (queuedCards.length !== 0) {
+    localObj.results = [];
+    queuedCards.forEach(element => {
+      localObj.results.push(element);
+    });
+
+    const arr = handleSuccess(localObj);
+    renderModalFilm(arr);
+  } else {
+    gallery.innerHTML = '';
+  }
 }
 
 function togglePlaceholder(collection) {

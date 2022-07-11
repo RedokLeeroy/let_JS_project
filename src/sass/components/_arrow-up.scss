@@ -1,0 +1,55 @@
+#return-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  //   background: rgb(0, 0, 0);
+  background: #ff6b08d3;
+
+  padding-top: 8px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  display: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  @include mq(tablet) {
+    bottom: 25px;
+    right: 40px;
+  }
+  @include mq(desktop) {
+    bottom: 90px;
+    right: 40px;
+  }
+}
+#return-to-top img {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  left: 16px;
+  top: 13px;
+  font-size: 19px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#return-to-top:hover {
+  background: #cf651f;
+}
+#return-to-top:hover img {
+  color: #fff;
+  top: 5px;
+}
+.icon-up {
+  width: 25px;
+  height: 25px;
+  transform: translate(-16%, -38%);
+}

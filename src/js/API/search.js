@@ -21,19 +21,22 @@ export function search(event) {
 
   if (searchInput.value.trim() === '') {
     errorText.innerHTML = 'Please enter any text';
+    errorText.style.color = '#ff001b';
     return;
   }
 
-  errorText.innerHTML = '';
+  errorText.style.color = 'transparent';
   currentPage = 1;
   showSpinner('show');
 
   themoviedbAPI.getSearchMovie(searchInput.value, currentPage).then(data => {
     if (data.total_results === 0) {
       errorText.innerHTML = `Search result not successful. Enter the correct movie name and`;
+      errorText.style.color = '#ff001b';
       showSpinner('hide');
       return;
     }
+
     const arr = handleSuccess(data);
     processSuccess(data);
     renderModalFilm(arr);
