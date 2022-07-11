@@ -5,17 +5,18 @@ const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
-const htmlElement = document.querySelector('html')
+const htmlElement = document.querySelector('html');
 const dataPage = document.querySelector('[data-page]');
-const activeWatched=document.querySelector('.active__watched')
-const activeQueued=document.querySelector('.active__queued')
+const activeWatched = document.querySelector('.active__watched');
+const activeQueued = document.querySelector('.active__queued');
 
-let positionFromTop
+let positionFromTop;
 let addLib;
 let cards;
 
-function getYPosition(){
-  let positionFromTop = window.pageYOffset || document.documentElement.scrollTop
+function getYPosition() {
+  let positionFromTop =
+    window.pageYOffset || document.documentElement.scrollTop;
   return positionFromTop;
 }
 
@@ -29,8 +30,8 @@ function onclick(evt) {
   positionFromTop = getYPosition();
   closeModal(positionFromTop);
 
-  htmlElement.style.top = ` -${positionFromTop}px`
-  htmlElement.style.left = `0px`
+  htmlElement.style.top = ` -${positionFromTop}px`;
+  htmlElement.style.left = `0px`;
   htmlElement.classList.add('hidden');
 }
 
@@ -57,8 +58,8 @@ function renderFilms(id) {
     originPoster = coverImage;
   }
 
-  const inWatchedId = watchedCards.find(element => element.id === Number(id))
-  const inQueuedId = queuedCards.find(element => element.id === Number(id))
+  const inWatchedId = watchedCards.find(element => element.id === Number(id));
+  const inQueuedId = queuedCards.find(element => element.id === Number(id));
 
   const average = vote_average.toString().slice(0, 3);
   const popularityCalc = Math.floor(popularity);
@@ -94,7 +95,9 @@ function renderFilms(id) {
             <td><p class='table-text__right '>${original_title}</p></td>
           </tr>
             <tr>
-            <td><p class='table-text__left'>Genre</p></td>
+            <td><p class='table-text__left'>${
+              genreNames.length ? 'Genre' : ''
+            }</p></td>
             <td><p class='table-text__right '>${genreNames}</p></td>
           </tr>
         </tbody>
@@ -104,7 +107,7 @@ function renderFilms(id) {
         <ul class='btn-list'>
           <li class='btn-list__item'>
            <button class='btn-list__item-btn--add' type="button">${
-            inWatchedId ? 'remove' : 'add to watched'
+             inWatchedId ? 'remove' : 'add to watched'
            }</button>
           </li>
           <li class='btn-list__item'>
