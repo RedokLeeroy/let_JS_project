@@ -1,5 +1,3 @@
-// import removeFilmsFromLibrary from './removeCard';
-
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
 

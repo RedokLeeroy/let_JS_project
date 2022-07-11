@@ -3,7 +3,6 @@ const LIBRARY_QUEUE = 'library-queie';
 
 export function addToWatch(data) {
   let arrayWatched = [];
-  console.log('add watch');
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
 
   btnAddWatch.addEventListener('click', () => {
