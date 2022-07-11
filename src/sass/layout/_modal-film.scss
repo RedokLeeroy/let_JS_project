@@ -45,7 +45,6 @@
   @include mq(tablet) {
     max-width: 704px;
     overflow: auto;
-
     display: flex;
     padding: 40px 72px 40px 40px;
 
@@ -170,6 +169,8 @@
   color: $card-titel-color;
 }
 .descr-text-content {
+  max-height: 100px;
+  overflow: auto;
   margin-bottom: 20px;
   font-family: 'Roboto';
   font-style: normal;

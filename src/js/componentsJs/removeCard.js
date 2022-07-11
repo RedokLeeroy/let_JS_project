@@ -1,4 +1,6 @@
 import { handleSuccess } from './generateCardList';
+import { addToWatch } from './addLocalStorage';
+import { addQueue } from './addLocalStorage';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
@@ -52,6 +54,10 @@ export function removeFromWatch(data) {
     btnAddWatch.disabled = true;
 
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
+    if(dataPage.dataset.page === 'home'){
+      btnAddWatch.disabled = false;
+      addToWatch(data)
+    }
   });
 }
 
@@ -107,5 +113,9 @@ export function removeFromQueue(data) {
     btnAddQueie.disabled = true;
 
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(newQueuedArray));
+    if(dataPage.dataset.page === 'home'){
+      btnAddQueie.disabled = false;
+      addQueue(data)
+    }
   });
 }
