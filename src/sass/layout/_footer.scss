@@ -4,16 +4,19 @@
   padding-bottom: 30px;
   padding-top: 29px;
   text-align: center;
+  align-items: baseline;
 
   @include mq(tablet) {
     display: flex;
     justify-content: center;
+    align-items: baseline;
     padding-top: 30px;
   }
 }
 
 footer {
   background-color: #f7f7f7;
+  position: relative;
 }
 .copyright {
   font-family: 'Roboto';
@@ -35,12 +38,30 @@ footer {
 .footer__div {
   display: flex;
   justify-content: center;
+  align-items: baseline;
 }
 
 .footer__img {
+  position: absolute;
+  bottom: 0;
+  width: 14px;
+  height: 13px;
+  left: 136px;
+  top: 54px;
   margin-left: 10px;
   margin-right: 10px;
-  //   height: min-content;
+  height: 20px;
+  @include mq(tablet) {
+    left: 465px;
+    top: 30px;
+  }
+  @include mq(desktop) {
+    left: 1035px;
+    top: 30px;
+  }
+}
+.plug {
+  width: 34px;
 }
 
 .footer__div-span {
