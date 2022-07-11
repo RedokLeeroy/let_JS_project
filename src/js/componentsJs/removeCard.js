@@ -1,5 +1,4 @@
 import { handleSuccess } from './generateCardList';
-// import { watchCards } from './library';
 
 const LIBRARY_WATCHED = 'library-watched';
 const LIBRARY_QUEUE = 'library-queie';
@@ -7,14 +6,19 @@ let currentPage = 1;
 
 export function removeFromWatch(data) {
   const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
+  const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
   const dataPage = document.querySelector('[data-page]');
   const libraryPlaceholder = document.querySelector('.placeholder');
-  const modalFilmCard = document.querySelector('.modal-film');
   const getCardWatched = JSON.parse(localStorage.getItem(LIBRARY_WATCHED));
-  const doc = document.querySelector('html');
+
+  const activeQueued=document.querySelector('.active__queued')
 
   if (data.isWatched) {
     btnAddWatch.textContent = 'Remove';
+  }
+
+  if(!activeQueued && dataPage.dataset.page === 'library'){
+    btnAddQueie.disabled = true;
   }
 
   btnAddWatch.addEventListener('click', () => {
@@ -47,25 +51,28 @@ export function removeFromWatch(data) {
     btnAddWatch.textContent = 'Removed!';
     btnAddWatch.disabled = true;
 
-    modalFilmCard.innerHTML = '';
-    doc.classList.remove('hidden');
-
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
   });
 }
 
 export function removeFromQueue(data) {
+  const btnAddWatch = document.querySelector('.btn-list__item-btn--add');
   const btnAddQueie = document.querySelector('.btn-list__item-btn--queie');
-  const doc = document.querySelector('html');
-
   const dataPage = document.querySelector('[data-page]');
   const libraryPlaceholder = document.querySelector('.placeholder');
   const modalFilmCard = document.querySelector('.modal-film');
+  const activeWatched=document.querySelector('.active__watched')
+
 
   const getCardQueued = JSON.parse(localStorage.getItem(LIBRARY_QUEUE));
 
   if (data.isQueued) {
     btnAddQueie.textContent = 'Remove';
+  }
+
+  
+  if(!activeWatched && dataPage.dataset.page === 'library'){
+    btnAddWatch.disabled = true;
   }
 
   btnAddQueie.addEventListener('click', () => {
@@ -98,9 +105,6 @@ export function removeFromQueue(data) {
 
     btnAddQueie.textContent = 'Removed!';
     btnAddQueie.disabled = true;
-
-    modalFilmCard.innerHTML = '';
-    doc.classList.remove('hidden');
 
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(newQueuedArray));
   });
