@@ -6,6 +6,9 @@ const LIBRARY_QUEUE = 'library-queie';
 const modalFilmCard = document.querySelector('.modal-film');
 const getList = document.querySelector('.gallery');
 const htmlElement = document.querySelector('html')
+const dataPage = document.querySelector('[data-page]');
+const activeWatched=document.querySelector('.active__watched')
+const activeQueued=document.querySelector('.active__queued')
 
 let positionFromTop
 let addLib;
