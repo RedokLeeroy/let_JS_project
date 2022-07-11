@@ -20,13 +20,12 @@ export function search(event) {
   event.preventDefault();
 
   if (searchInput.value.trim() === '') {
-    errorText.classList.add('empty');
     errorText.innerHTML = 'Please enter any text';
-    errorText.classList.add('empty');
+    errorText.style.color = '#ff001b';
     return;
   }
 
-  errorText.innerHTML = '';
+  errorText.style.color = 'transparent';
   currentPage = 1;
   showSpinner('show');
 
@@ -37,6 +36,7 @@ export function search(event) {
       showSpinner('hide');
       return;
     }
+
     const arr = handleSuccess(data);
     processSuccess(data);
     renderModalFilm(arr);

@@ -3,6 +3,7 @@ import { createCard } from './createCard';
 import { renderModalFilm } from '../templates/renderModalFilm';
 import { renderPagination } from '../pagination/pagination';
 import { serchGenre } from './decodeGanre';
+import { addFlags } from './flagMarkup';
 
 const gallery = document.querySelector('.gallery');
 const container = document.querySelector('.pagination-container');
@@ -26,8 +27,10 @@ export function handleSuccess(data) {
   }
 
   let newData = data.results;
-  // gallery.insertAdjacentHTML('beforeend', createCard(data.results));
+
   gallery.innerHTML = createCard(data.results);
+  addFlags();
+
   renderPagination(data.page, data.total_pages);
   container.addEventListener('click', handlePagination);
   return newData;

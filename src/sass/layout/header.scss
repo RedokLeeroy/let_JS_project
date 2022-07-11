@@ -202,7 +202,6 @@
 }
 
 .error {
-
   width: 240px;
   position: absolute;
   color: #ff001b;
@@ -222,11 +221,6 @@
   @include mq(desktop) {
     text-align: center;
   }
-}
-
-.empty {
-  transform: translate(50%);
-  right: 50%;
 }
 
 .header__library-btn:hover,
