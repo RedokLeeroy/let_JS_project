@@ -31,9 +31,8 @@ export function createCard(data) {
         }
 
         return `
-          <li class="card_item grid-item" id="${id}">
-            <div class="card__image" data-id="${id}">
-				 
+          <li class="card_item grid-item" id=${id}>
+            <div class="card__image">
               <img class="image" src=${originPoster} alt="${title}" loading="lazy" />
               </div>
 
