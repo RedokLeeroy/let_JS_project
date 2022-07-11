@@ -47,9 +47,6 @@ export function removeFromWatch(data) {
     btnAddWatch.textContent = 'Removed!';
     btnAddWatch.disabled = true;
 
-    modalFilmCard.innerHTML = '';
-    doc.classList.remove('hidden');
-
     localStorage.setItem(LIBRARY_WATCHED, JSON.stringify(newWatchedArray));
   });
 }
@@ -98,9 +95,6 @@ export function removeFromQueue(data) {
 
     btnAddQueie.textContent = 'Removed!';
     btnAddQueie.disabled = true;
-
-    modalFilmCard.innerHTML = '';
-    doc.classList.remove('hidden');
 
     localStorage.setItem(LIBRARY_QUEUE, JSON.stringify(newQueuedArray));
   });
