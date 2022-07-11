@@ -1,21 +1,25 @@
-//Base
+//Utils
 @import './utils/vars';
 @import './utils/mixin';
 @import './utils/visually-hidden';
 @import './utils/common';
+
+//Base
 @import './base/grid';
 @import './base/reset';
-@import './base/base'; // Components
-@import './components/modal';
+@import './base/base'; 
 
 // Components
+@import './components/modal';
 @import './components/spinner';
 @import './components/gallary';
-@import './components/pagination'; // Layouts
+@import './components/pagination'; 
+@import './components/placeholder';
+@import './components/arrow-up';
+@import './components/scroll-bar';
+
+// Layouts
 @import './layout/header';
 @import './layout/modal-film';
 @import './layout/footer';
 @import './layout/libryari-list';
-@import './components/placeholder';
-@import './components/arrow-up';
-@import './components/scroll-bar'
